@@ -1,0 +1,626 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		323132D22AC0D53A0088639E /* SwiftTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132D12AC0D53A0088639E /* SwiftTVApp.swift */; };
+		323132D42AC0D53A0088639E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132D32AC0D53A0088639E /* ContentView.swift */; };
+		323132D62AC0D53A0088639E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132D52AC0D53A0088639E /* Item.swift */; };
+		323132D82AC0D53B0088639E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323132D72AC0D53B0088639E /* Assets.xcassets */; };
+		323132DC2AC0D53B0088639E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323132DB2AC0D53B0088639E /* Preview Assets.xcassets */; };
+		323132E62AC0D53B0088639E /* SwiftTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132E52AC0D53B0088639E /* SwiftTVTests.swift */; };
+		323132F02AC0D53B0088639E /* SwiftTVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132EF2AC0D53B0088639E /* SwiftTVUITests.swift */; };
+		323132F22AC0D53B0088639E /* SwiftTVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132F12AC0D53B0088639E /* SwiftTVUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		323132E22AC0D53B0088639E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 323132C62AC0D53A0088639E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 323132CD2AC0D53A0088639E;
+			remoteInfo = SwiftTV;
+		};
+		323132EC2AC0D53B0088639E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 323132C62AC0D53A0088639E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 323132CD2AC0D53A0088639E;
+			remoteInfo = SwiftTV;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		323132CE2AC0D53A0088639E /* SwiftTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		323132D12AC0D53A0088639E /* SwiftTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTVApp.swift; sourceTree = "<group>"; };
+		323132D32AC0D53A0088639E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		323132D52AC0D53A0088639E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		323132D72AC0D53B0088639E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		323132D92AC0D53B0088639E /* SwiftTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftTV.entitlements; sourceTree = "<group>"; };
+		323132DB2AC0D53B0088639E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		323132E12AC0D53B0088639E /* SwiftTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		323132E52AC0D53B0088639E /* SwiftTVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTVTests.swift; sourceTree = "<group>"; };
+		323132EB2AC0D53B0088639E /* SwiftTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		323132EF2AC0D53B0088639E /* SwiftTVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTVUITests.swift; sourceTree = "<group>"; };
+		323132F12AC0D53B0088639E /* SwiftTVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTVUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		323132CB2AC0D53A0088639E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		323132DE2AC0D53B0088639E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		323132E82AC0D53B0088639E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		323132C52AC0D53A0088639E = {
+			isa = PBXGroup;
+			children = (
+				323132D02AC0D53A0088639E /* SwiftTV */,
+				323132E42AC0D53B0088639E /* SwiftTVTests */,
+				323132EE2AC0D53B0088639E /* SwiftTVUITests */,
+				323132CF2AC0D53A0088639E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		323132CF2AC0D53A0088639E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				323132CE2AC0D53A0088639E /* SwiftTV.app */,
+				323132E12AC0D53B0088639E /* SwiftTVTests.xctest */,
+				323132EB2AC0D53B0088639E /* SwiftTVUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		323132D02AC0D53A0088639E /* SwiftTV */ = {
+			isa = PBXGroup;
+			children = (
+				323132D12AC0D53A0088639E /* SwiftTVApp.swift */,
+				323132D32AC0D53A0088639E /* ContentView.swift */,
+				323132D52AC0D53A0088639E /* Item.swift */,
+				323132D72AC0D53B0088639E /* Assets.xcassets */,
+				323132D92AC0D53B0088639E /* SwiftTV.entitlements */,
+				323132DA2AC0D53B0088639E /* Preview Content */,
+			);
+			path = SwiftTV;
+			sourceTree = "<group>";
+		};
+		323132DA2AC0D53B0088639E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				323132DB2AC0D53B0088639E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		323132E42AC0D53B0088639E /* SwiftTVTests */ = {
+			isa = PBXGroup;
+			children = (
+				323132E52AC0D53B0088639E /* SwiftTVTests.swift */,
+			);
+			path = SwiftTVTests;
+			sourceTree = "<group>";
+		};
+		323132EE2AC0D53B0088639E /* SwiftTVUITests */ = {
+			isa = PBXGroup;
+			children = (
+				323132EF2AC0D53B0088639E /* SwiftTVUITests.swift */,
+				323132F12AC0D53B0088639E /* SwiftTVUITestsLaunchTests.swift */,
+			);
+			path = SwiftTVUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		323132CD2AC0D53A0088639E /* SwiftTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 323132F52AC0D53B0088639E /* Build configuration list for PBXNativeTarget "SwiftTV" */;
+			buildPhases = (
+				323132CA2AC0D53A0088639E /* Sources */,
+				323132CB2AC0D53A0088639E /* Frameworks */,
+				323132CC2AC0D53A0088639E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftTV;
+			productName = SwiftTV;
+			productReference = 323132CE2AC0D53A0088639E /* SwiftTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+		323132E02AC0D53B0088639E /* SwiftTVTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 323132F82AC0D53B0088639E /* Build configuration list for PBXNativeTarget "SwiftTVTests" */;
+			buildPhases = (
+				323132DD2AC0D53B0088639E /* Sources */,
+				323132DE2AC0D53B0088639E /* Frameworks */,
+				323132DF2AC0D53B0088639E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				323132E32AC0D53B0088639E /* PBXTargetDependency */,
+			);
+			name = SwiftTVTests;
+			productName = SwiftTVTests;
+			productReference = 323132E12AC0D53B0088639E /* SwiftTVTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		323132EA2AC0D53B0088639E /* SwiftTVUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 323132FB2AC0D53B0088639E /* Build configuration list for PBXNativeTarget "SwiftTVUITests" */;
+			buildPhases = (
+				323132E72AC0D53B0088639E /* Sources */,
+				323132E82AC0D53B0088639E /* Frameworks */,
+				323132E92AC0D53B0088639E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				323132ED2AC0D53B0088639E /* PBXTargetDependency */,
+			);
+			name = SwiftTVUITests;
+			productName = SwiftTVUITests;
+			productReference = 323132EB2AC0D53B0088639E /* SwiftTVUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		323132C62AC0D53A0088639E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					323132CD2AC0D53A0088639E = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					323132E02AC0D53B0088639E = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 323132CD2AC0D53A0088639E;
+					};
+					323132EA2AC0D53B0088639E = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 323132CD2AC0D53A0088639E;
+					};
+				};
+			};
+			buildConfigurationList = 323132C92AC0D53A0088639E /* Build configuration list for PBXProject "SwiftTV" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 323132C52AC0D53A0088639E;
+			productRefGroup = 323132CF2AC0D53A0088639E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				323132CD2AC0D53A0088639E /* SwiftTV */,
+				323132E02AC0D53B0088639E /* SwiftTVTests */,
+				323132EA2AC0D53B0088639E /* SwiftTVUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		323132CC2AC0D53A0088639E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				323132DC2AC0D53B0088639E /* Preview Assets.xcassets in Resources */,
+				323132D82AC0D53B0088639E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		323132DF2AC0D53B0088639E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		323132E92AC0D53B0088639E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		323132CA2AC0D53A0088639E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				323132D42AC0D53A0088639E /* ContentView.swift in Sources */,
+				323132D62AC0D53A0088639E /* Item.swift in Sources */,
+				323132D22AC0D53A0088639E /* SwiftTVApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		323132DD2AC0D53B0088639E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				323132E62AC0D53B0088639E /* SwiftTVTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		323132E72AC0D53B0088639E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				323132F22AC0D53B0088639E /* SwiftTVUITestsLaunchTests.swift in Sources */,
+				323132F02AC0D53B0088639E /* SwiftTVUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		323132E32AC0D53B0088639E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 323132CD2AC0D53A0088639E /* SwiftTV */;
+			targetProxy = 323132E22AC0D53B0088639E /* PBXContainerItemProxy */;
+		};
+		323132ED2AC0D53B0088639E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 323132CD2AC0D53A0088639E /* SwiftTV */;
+			targetProxy = 323132EC2AC0D53B0088639E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		323132F32AC0D53B0088639E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		323132F42AC0D53B0088639E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		323132F62AC0D53B0088639E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwiftTV/SwiftTV.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftTV/Preview Content\"";
+				DEVELOPMENT_TEAM = 893B7F9TL7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emelagudev.SwiftTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		323132F72AC0D53B0088639E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SwiftTV/SwiftTV.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftTV/Preview Content\"";
+				DEVELOPMENT_TEAM = 893B7F9TL7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emelagudev.SwiftTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		323132F92AC0D53B0088639E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 893B7F9TL7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emelagudev.SwiftTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftTV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftTV";
+			};
+			name = Debug;
+		};
+		323132FA2AC0D53B0088639E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 893B7F9TL7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emelagudev.SwiftTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftTV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftTV";
+			};
+			name = Release;
+		};
+		323132FC2AC0D53B0088639E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 893B7F9TL7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emelagudev.SwiftTVUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SwiftTV;
+			};
+			name = Debug;
+		};
+		323132FD2AC0D53B0088639E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 893B7F9TL7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emelagudev.SwiftTVUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SwiftTV;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		323132C92AC0D53A0088639E /* Build configuration list for PBXProject "SwiftTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				323132F32AC0D53B0088639E /* Debug */,
+				323132F42AC0D53B0088639E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		323132F52AC0D53B0088639E /* Build configuration list for PBXNativeTarget "SwiftTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				323132F62AC0D53B0088639E /* Debug */,
+				323132F72AC0D53B0088639E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		323132F82AC0D53B0088639E /* Build configuration list for PBXNativeTarget "SwiftTVTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				323132F92AC0D53B0088639E /* Debug */,
+				323132FA2AC0D53B0088639E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		323132FB2AC0D53B0088639E /* Build configuration list for PBXNativeTarget "SwiftTVUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				323132FC2AC0D53B0088639E /* Debug */,
+				323132FD2AC0D53B0088639E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 323132C62AC0D53A0088639E /* Project object */;
+}

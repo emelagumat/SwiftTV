@@ -88,3 +88,6 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+SwiftTV.xcodeproj/project.xcworkspace/xcshareddata
+SwiftTV.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+.DS_Store
