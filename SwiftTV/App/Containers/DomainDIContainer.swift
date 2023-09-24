@@ -2,11 +2,13 @@
 import Domain
 
 class DomainDIContainer {
-    let dataContainer: DataDIContainer
+    private let dataContainer: DataDIContainer
     
     lazy private(set) var tabBarUseCase: TabBarUseCase = TabBarUseCaseImpl(
         tabBarRepository: dataContainer.tabBarRepository
     )
+    
+    lazy private(set) var discoverUseCase: DiscoverUseCase = .init(discoverRepository: dataContainer.discoverRepository)
     
     init(
         dataContainer: DataDIContainer = .init()

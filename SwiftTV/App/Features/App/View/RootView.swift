@@ -17,7 +17,10 @@ struct RootView: View {
             } else: {
                 LoadingView()
             }
-            .task { store.send(.onAppear) }
+            .task {
+                store.send(.onAppear)
+                await DomainDIContainer().discoverUseCase.getDiscovery()
+            }
         }
     }
 }

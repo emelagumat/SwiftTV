@@ -6,7 +6,7 @@ public class DiscoverUseCase {
         self.discoverRepository = discoverRepository
     }
     
-    func getDiscovery() async {
+    public func getDiscovery() async {
         await discoverRepository.getDiscovery()
     }
 }
