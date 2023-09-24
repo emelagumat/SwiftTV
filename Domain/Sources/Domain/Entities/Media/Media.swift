@@ -1,4 +1,1 @@
 
-public protocol Media {
-    
-}

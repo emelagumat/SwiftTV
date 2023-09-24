@@ -5,16 +5,26 @@ public struct MediaCollection: Equatable {
     public let category: Category
     public let items: [MediaItem]
     public let hasMoreItems: Bool
+    
+    public init(
+        category: MediaCollection.Category,
+        items: [MediaItem],
+        hasMoreItems: Bool
+    ) {
+        self.category = category
+        self.items = items
+        self.hasMoreItems = hasMoreItems
+    }
 }
 
 public extension MediaCollection {
-    enum Category: Equatable {
+    enum Category: Equatable, Hashable {
         case series(Serie)
     }
 }
 
 public extension MediaCollection.Category {
-    enum Serie: Equatable {
+    enum Serie: Equatable, Hashable {
         case airingToday
         case onTheAir
         case popular

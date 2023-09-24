@@ -7,7 +7,7 @@ public struct MediaItem: Equatable {
     public let firstAirDate: Date?
     public let genres: [Int]
     public let name: String
-    public let originCountryCode: String
+    public let originCountryCode: [String]
     public let overview: String
     public let backdropURL: String
     public let posterURL: String
@@ -19,7 +19,7 @@ public struct MediaItem: Equatable {
         firstAirDate: Date? = nil,
         genres: [Int],
         name: String,
-        originCountryCode: String,
+        originCountryCode: [String],
         overview: String,
         backdropURL: String,
         posterURL: String,
