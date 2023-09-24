@@ -19,20 +19,10 @@ public class DiscoverRepositoryImpl: DiscoverRepository {
             headers: [:]
         )
         do {
-            let response = try await provider.getResponse(from: endPoint) as PaginatedResponse<MediaItemResponse>
+            let response = try await provider.getResponse(from: endPoint) as PaginatedResponse<SerieResponse>
             print(response.results?.count)
         } catch {
             print(error)
         }
     }
-}
-
-struct PaginatedResponse<T: Codable>: Codable {
-    let page: Int?
-    let results: [T?]?
-}
-
-struct MediaItemResponse: Codable {
-    let id: Int?
-    let original_title: String?
 }
