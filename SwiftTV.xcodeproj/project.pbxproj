@@ -17,6 +17,8 @@
 		323132F22AC0D53B0088639E /* SwiftTVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132F12AC0D53B0088639E /* SwiftTVUITestsLaunchTests.swift */; };
 		323133002AC0DAA10088639E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 323132FF2AC0DAA10088639E /* ComposableArchitecture */; };
 		323133032AC0DAAF0088639E /* SFSymbolEnum in Frameworks */ = {isa = PBXBuildFile; productRef = 323133022AC0DAAF0088639E /* SFSymbolEnum */; };
+		323133092AC0DB7A0088639E /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 323133082AC0DB7A0088639E /* Data */; };
+		3231330B2AC0DB7E0088639E /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 3231330A2AC0DB7E0088639E /* Domain */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		323132EB2AC0D53B0088639E /* SwiftTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		323132EF2AC0D53B0088639E /* SwiftTVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTVUITests.swift; sourceTree = "<group>"; };
 		323132F12AC0D53B0088639E /* SwiftTVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTVUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		323133052AC0DB400088639E /* Data */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Data; sourceTree = "<group>"; };
+		323133062AC0DB6B0088639E /* Domain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Domain; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			files = (
 				323133032AC0DAAF0088639E /* SFSymbolEnum in Frameworks */,
 				323133002AC0DAA10088639E /* ComposableArchitecture in Frameworks */,
+				3231330B2AC0DB7E0088639E /* Domain in Frameworks */,
+				323133092AC0DB7A0088639E /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,10 +87,13 @@
 		323132C52AC0D53A0088639E = {
 			isa = PBXGroup;
 			children = (
+				323133062AC0DB6B0088639E /* Domain */,
+				323133052AC0DB400088639E /* Data */,
 				323132D02AC0D53A0088639E /* SwiftTV */,
 				323132E42AC0D53B0088639E /* SwiftTVTests */,
 				323132EE2AC0D53B0088639E /* SwiftTVUITests */,
 				323132CF2AC0D53A0088639E /* Products */,
+				323133072AC0DB7A0088639E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +145,13 @@
 			path = SwiftTVUITests;
 			sourceTree = "<group>";
 		};
+		323133072AC0DB7A0088639E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,6 +171,8 @@
 			packageProductDependencies = (
 				323132FF2AC0DAA10088639E /* ComposableArchitecture */,
 				323133022AC0DAAF0088639E /* SFSymbolEnum */,
+				323133082AC0DB7A0088639E /* Data */,
+				3231330A2AC0DB7E0088639E /* Domain */,
 			);
 			productName = SwiftTV;
 			productReference = 323132CE2AC0D53A0088639E /* SwiftTV.app */;
@@ -672,6 +690,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 323133012AC0DAAF0088639E /* XCRemoteSwiftPackageReference "SFSymbolEnum" */;
 			productName = SFSymbolEnum;
+		};
+		323133082AC0DB7A0088639E /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		3231330A2AC0DB7E0088639E /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
