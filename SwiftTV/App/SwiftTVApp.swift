@@ -2,6 +2,7 @@
 
 import SwiftUI
 import SwiftData
+import ComposableArchitecture
 
 @main
 struct SwiftTVApp: App {
@@ -20,7 +21,12 @@ struct SwiftTVApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView(
+                store: .init(
+                    initialState: .init(),
+                    reducer: { AppFeature() }
+                )
+            )
         }
         .modelContainer(sharedModelContainer)
     }

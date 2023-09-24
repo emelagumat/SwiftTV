@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		323132D22AC0D53A0088639E /* SwiftTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132D12AC0D53A0088639E /* SwiftTVApp.swift */; };
-		323132D42AC0D53A0088639E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132D32AC0D53A0088639E /* ContentView.swift */; };
 		323132D62AC0D53A0088639E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132D52AC0D53A0088639E /* Item.swift */; };
 		323132D82AC0D53B0088639E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323132D72AC0D53B0088639E /* Assets.xcassets */; };
 		323132DC2AC0D53B0088639E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323132DB2AC0D53B0088639E /* Preview Assets.xcassets */; };
@@ -19,6 +18,17 @@
 		323133032AC0DAAF0088639E /* SFSymbolEnum in Frameworks */ = {isa = PBXBuildFile; productRef = 323133022AC0DAAF0088639E /* SFSymbolEnum */; };
 		323133092AC0DB7A0088639E /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 323133082AC0DB7A0088639E /* Data */; };
 		3231330B2AC0DB7E0088639E /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 3231330A2AC0DB7E0088639E /* Domain */; };
+		323133212AC0DCDB0088639E /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3231330F2AC0DCDB0088639E /* LoadingView.swift */; };
+		323133232AC0DCDB0088639E /* RootView+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323133142AC0DCDB0088639E /* RootView+State.swift */; };
+		323133242AC0DCDB0088639E /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323133152AC0DCDB0088639E /* RootView.swift */; };
+		323133252AC0DCDB0088639E /* RootView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323133162AC0DCDB0088639E /* RootView+Action.swift */; };
+		323133262AC0DCDB0088639E /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323133182AC0DCDB0088639E /* AppFeature.swift */; };
+		323133272AC0DCDB0088639E /* AppFeature+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323133192AC0DCDB0088639E /* AppFeature+Action.swift */; };
+		323133282AC0DCDB0088639E /* AppFeature+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3231331A2AC0DCDB0088639E /* AppFeature+State.swift */; };
+		323133292AC0DCDB0088639E /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3231331C2AC0DCDB0088639E /* TabBarView.swift */; };
+		3231332A2AC0DCDB0088639E /* TabBarFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3231331D2AC0DCDB0088639E /* TabBarFeature.swift */; };
+		3231332B2AC0DCDB0088639E /* DataDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3231331F2AC0DCDB0088639E /* DataDIContainer.swift */; };
+		3231332C2AC0DCDB0088639E /* DomainDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323133202AC0DCDB0088639E /* DomainDIContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +51,6 @@
 /* Begin PBXFileReference section */
 		323132CE2AC0D53A0088639E /* SwiftTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		323132D12AC0D53A0088639E /* SwiftTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTVApp.swift; sourceTree = "<group>"; };
-		323132D32AC0D53A0088639E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		323132D52AC0D53A0088639E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		323132D72AC0D53B0088639E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		323132D92AC0D53B0088639E /* SwiftTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftTV.entitlements; sourceTree = "<group>"; };
@@ -53,6 +62,17 @@
 		323132F12AC0D53B0088639E /* SwiftTVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTVUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		323133052AC0DB400088639E /* Data */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Data; sourceTree = "<group>"; };
 		323133062AC0DB6B0088639E /* Domain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Domain; sourceTree = "<group>"; };
+		3231330F2AC0DCDB0088639E /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		323133142AC0DCDB0088639E /* RootView+State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RootView+State.swift"; sourceTree = "<group>"; };
+		323133152AC0DCDB0088639E /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		323133162AC0DCDB0088639E /* RootView+Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RootView+Action.swift"; sourceTree = "<group>"; };
+		323133182AC0DCDB0088639E /* AppFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
+		323133192AC0DCDB0088639E /* AppFeature+Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppFeature+Action.swift"; sourceTree = "<group>"; };
+		3231331A2AC0DCDB0088639E /* AppFeature+State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppFeature+State.swift"; sourceTree = "<group>"; };
+		3231331C2AC0DCDB0088639E /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		3231331D2AC0DCDB0088639E /* TabBarFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarFeature.swift; sourceTree = "<group>"; };
+		3231331F2AC0DCDB0088639E /* DataDIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDIContainer.swift; sourceTree = "<group>"; };
+		323133202AC0DCDB0088639E /* DomainDIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainDIContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +130,7 @@
 		323132D02AC0D53A0088639E /* SwiftTV */ = {
 			isa = PBXGroup;
 			children = (
-				323132D12AC0D53A0088639E /* SwiftTVApp.swift */,
-				323132D32AC0D53A0088639E /* ContentView.swift */,
+				3231330C2AC0DCDB0088639E /* App */,
 				323132D52AC0D53A0088639E /* Item.swift */,
 				323132D72AC0D53B0088639E /* Assets.xcassets */,
 				323132D92AC0D53B0088639E /* SwiftTV.entitlements */,
@@ -150,6 +169,89 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3231330C2AC0DCDB0088639E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				323132D12AC0D53A0088639E /* SwiftTVApp.swift */,
+				3231330D2AC0DCDB0088639E /* UI */,
+				323133112AC0DCDB0088639E /* Features */,
+				3231331E2AC0DCDB0088639E /* Containers */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3231330D2AC0DCDB0088639E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3231330E2AC0DCDB0088639E /* Atoms */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3231330E2AC0DCDB0088639E /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				3231330F2AC0DCDB0088639E /* LoadingView.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		323133112AC0DCDB0088639E /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				323133122AC0DCDB0088639E /* App */,
+				3231331B2AC0DCDB0088639E /* TabBar */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		323133122AC0DCDB0088639E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				323133132AC0DCDB0088639E /* View */,
+				323133172AC0DCDB0088639E /* Feature */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		323133132AC0DCDB0088639E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				323133142AC0DCDB0088639E /* RootView+State.swift */,
+				323133152AC0DCDB0088639E /* RootView.swift */,
+				323133162AC0DCDB0088639E /* RootView+Action.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		323133172AC0DCDB0088639E /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				323133182AC0DCDB0088639E /* AppFeature.swift */,
+				323133192AC0DCDB0088639E /* AppFeature+Action.swift */,
+				3231331A2AC0DCDB0088639E /* AppFeature+State.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		3231331B2AC0DCDB0088639E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				3231331C2AC0DCDB0088639E /* TabBarView.swift */,
+				3231331D2AC0DCDB0088639E /* TabBarFeature.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		3231331E2AC0DCDB0088639E /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				3231331F2AC0DCDB0088639E /* DataDIContainer.swift */,
+				323133202AC0DCDB0088639E /* DomainDIContainer.swift */,
+			);
+			path = Containers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,8 +395,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				323132D42AC0D53A0088639E /* ContentView.swift in Sources */,
+				323133262AC0DCDB0088639E /* AppFeature.swift in Sources */,
+				323133252AC0DCDB0088639E /* RootView+Action.swift in Sources */,
+				323133232AC0DCDB0088639E /* RootView+State.swift in Sources */,
+				323133212AC0DCDB0088639E /* LoadingView.swift in Sources */,
+				323133272AC0DCDB0088639E /* AppFeature+Action.swift in Sources */,
+				323133242AC0DCDB0088639E /* RootView.swift in Sources */,
+				3231332C2AC0DCDB0088639E /* DomainDIContainer.swift in Sources */,
 				323132D62AC0D53A0088639E /* Item.swift in Sources */,
+				323133282AC0DCDB0088639E /* AppFeature+State.swift in Sources */,
+				3231332B2AC0DCDB0088639E /* DataDIContainer.swift in Sources */,
+				323133292AC0DCDB0088639E /* TabBarView.swift in Sources */,
+				3231332A2AC0DCDB0088639E /* TabBarFeature.swift in Sources */,
 				323132D22AC0D53A0088639E /* SwiftTVApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
