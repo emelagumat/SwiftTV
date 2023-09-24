@@ -12,12 +12,16 @@ let package = Package(
             targets: ["Data"]),
     ],
     dependencies: [
-        .package(path: "../Domain")
+        .package(path: "../Domain"),
+        .package(path: "../../MLDCore")
     ],
     targets: [
         .target(
             name: "Data", 
-            dependencies: ["Domain"]
+            dependencies: [
+                "Domain",
+                .product(name: "APIClient", package: "MLDCore")
+            ]
         ),
         .testTarget(
             name: "DataTests",
