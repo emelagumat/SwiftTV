@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -351,7 +351,7 @@
 			packageReferences = (
 				323132FE2AC0DAA10088639E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				323133012AC0DAAF0088639E /* XCRemoteSwiftPackageReference "SFSymbolEnum" */,
-				323133042AC0DADF0088639E /* XCRemoteSwiftPackageReference "MLDCore" */,
+				3231332D2AC0E0FA0088639E /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */,
 			);
 			productRefGroup = 323132CF2AC0D53A0088639E /* Products */;
 			projectDirPath = "";
@@ -765,6 +765,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		3231332D2AC0E0FA0088639E /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../MLDCore/MLDCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		323132FE2AC0DAA10088639E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -780,14 +787,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.3.0;
-			};
-		};
-		323133042AC0DADF0088639E /* XCRemoteSwiftPackageReference "MLDCore" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:emelagumat/MLDCore.git";
-			requirement = {
-				branch = main;
-				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
