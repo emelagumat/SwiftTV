@@ -2,6 +2,8 @@
 import Domain
 
 class DomainDIContainer {
+    static let shared = DomainDIContainer()
+    
     private let dataContainer: DataDIContainer
     
     lazy private(set) var tabBarUseCase: TabBarUseCase = TabBarUseCaseImpl(
@@ -9,8 +11,9 @@ class DomainDIContainer {
     )
     
     lazy private(set) var discoverUseCase: DiscoverUseCase = .init(discoverRepository: dataContainer.discoverRepository)
+    lazy private(set) var listUseCase: ListsUseCase = .init(listsRepository: dataContainer.listsRepository)
     
-    init(
+    private init(
         dataContainer: DataDIContainer = .init()
     ) {
         self.dataContainer = dataContainer

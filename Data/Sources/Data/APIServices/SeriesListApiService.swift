@@ -2,19 +2,12 @@
 import APIClient
 import Domain
 
-public protocol TMDBApiService: APIService {}
-
-public extension TMDBApiService {
-    var baseStringURL: String {
-        "https://api.themoviedb.org/3"
-    }
-}
-
 public final class SeriesListApiService: TMDBApiService {
     public typealias Action = SeriesListApiServiceAction
     
     public var path: String { "/tv" }
-    
+ 
+    public init() {}
 }
 
 public enum SeriesListApiServiceAction: APIServiceAction {
@@ -37,8 +30,6 @@ public enum SeriesListApiServiceAction: APIServiceAction {
         
         return params
     }
-    
-    
 }
 
 private extension MediaCollection.Category {

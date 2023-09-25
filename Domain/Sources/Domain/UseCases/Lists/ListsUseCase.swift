@@ -6,7 +6,7 @@ public final class ListsUseCase {
         self.listsRepository = listsRepository
     }
     
-    func getNextPage(for category: MediaCollection.Category) async -> Result<MediaCollection, DomainError> {
+    public func getNextPage(for category: MediaCollection.Category) async -> Result<MediaCollection, DomainError> {
         await listsRepository.getNextPage(for: category)
     }
 }

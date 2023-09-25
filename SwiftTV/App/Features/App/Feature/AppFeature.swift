@@ -11,7 +11,7 @@ import Domain
 struct AppFeature: Reducer {
     let container: DomainDIContainer
     
-    init(container: DomainDIContainer = .init()) {
+    init(container: DomainDIContainer = .shared) {
         self.container = container
     }
     
