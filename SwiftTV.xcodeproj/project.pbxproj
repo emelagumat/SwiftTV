@@ -34,6 +34,8 @@
 		329E59BC2AC1041C00D0FBAF /* SeriesListView+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59BB2AC1041C00D0FBAF /* SeriesListView+State.swift */; };
 		329E59BE2AC1054A00D0FBAF /* TabBarViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59BD2AC1054A00D0FBAF /* TabBarViewBuilder.swift */; };
 		329E59C12AC17C4600D0FBAF /* SeriesListView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59C02AC17C4600D0FBAF /* SeriesListView+Action.swift */; };
+		329E59C42AC17D6C00D0FBAF /* SerieCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59C32AC17D6C00D0FBAF /* SerieCollection.swift */; };
+		329E59C62AC17FB400D0FBAF /* MLDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 329E59C52AC17FB400D0FBAF /* MLDCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,7 @@
 		329E59BB2AC1041C00D0FBAF /* SeriesListView+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeriesListView+State.swift"; sourceTree = "<group>"; };
 		329E59BD2AC1054A00D0FBAF /* TabBarViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewBuilder.swift; sourceTree = "<group>"; };
 		329E59C02AC17C4600D0FBAF /* SeriesListView+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeriesListView+Action.swift"; sourceTree = "<group>"; };
+		329E59C32AC17D6C00D0FBAF /* SerieCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,7 @@
 				323133032AC0DAAF0088639E /* SFSymbolEnum in Frameworks */,
 				323133002AC0DAA10088639E /* ComposableArchitecture in Frameworks */,
 				3231330B2AC0DB7E0088639E /* Domain in Frameworks */,
+				329E59C62AC17FB400D0FBAF /* MLDCore in Frameworks */,
 				323133092AC0DB7A0088639E /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +273,7 @@
 		329E59B52AC1032F00D0FBAF /* SeriesList */ = {
 			isa = PBXGroup;
 			children = (
+				329E59C22AC17D5D00D0FBAF /* Models */,
 				329E59BF2AC17C1F00D0FBAF /* View */,
 				329E59B82AC1034400D0FBAF /* Feature */,
 			);
@@ -293,6 +298,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		329E59C22AC17D5D00D0FBAF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				329E59C32AC17D6C00D0FBAF /* SerieCollection.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,6 +327,7 @@
 				323133022AC0DAAF0088639E /* SFSymbolEnum */,
 				323133082AC0DB7A0088639E /* Data */,
 				3231330A2AC0DB7E0088639E /* Domain */,
+				329E59C52AC17FB400D0FBAF /* MLDCore */,
 			);
 			productName = SwiftTV;
 			productReference = 323132CE2AC0D53A0088639E /* SwiftTV.app */;
@@ -446,6 +460,7 @@
 				323133242AC0DCDB0088639E /* RootView.swift in Sources */,
 				3231332C2AC0DCDB0088639E /* DomainDIContainer.swift in Sources */,
 				323132D62AC0D53A0088639E /* Item.swift in Sources */,
+				329E59C42AC17D6C00D0FBAF /* SerieCollection.swift in Sources */,
 				323133282AC0DCDB0088639E /* AppFeature+State.swift in Sources */,
 				3231332B2AC0DCDB0088639E /* DataDIContainer.swift in Sources */,
 				323133292AC0DCDB0088639E /* TabBarView.swift in Sources */,
@@ -853,6 +868,11 @@
 		3231330A2AC0DB7E0088639E /* Domain */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Domain;
+		};
+		329E59C52AC17FB400D0FBAF /* MLDCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3231332D2AC0E0FA0088639E /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */;
+			productName = MLDCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

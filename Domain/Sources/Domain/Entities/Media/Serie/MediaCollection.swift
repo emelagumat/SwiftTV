@@ -3,8 +3,8 @@ import Foundation
 
 public struct MediaCollection: Equatable {
     public let category: Category
-    public let items: [MediaItem]
-    public let hasMoreItems: Bool
+    public private(set) var items: [MediaItem]
+    public private(set) var hasMoreItems: Bool
     
     public init(
         category: MediaCollection.Category,
@@ -15,6 +15,11 @@ public struct MediaCollection: Equatable {
         self.items = items
         self.hasMoreItems = hasMoreItems
     }
+    
+    mutating public func addItems(_ items: [MediaItem], hasMore: Bool) {
+        self.items.append(contentsOf: items)
+        self.hasMoreItems = hasMore
+    }
 }
 
 public extension MediaCollection {
@@ -24,7 +29,7 @@ public extension MediaCollection {
 }
 
 public extension MediaCollection.Category {
-    enum Serie: Equatable, Hashable {
+    enum Serie: Equatable, Hashable, CaseIterable {
         case airingToday
         case onTheAir
         case popular
