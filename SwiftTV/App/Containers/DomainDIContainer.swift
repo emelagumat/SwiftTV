@@ -1,5 +1,6 @@
 
 import Domain
+import Data
 
 class DomainDIContainer {
     static let shared = DomainDIContainer()
@@ -12,7 +13,7 @@ class DomainDIContainer {
     
     lazy private(set) var discoverUseCase: DiscoverUseCase = .init(discoverRepository: dataContainer.discoverRepository)
     lazy private(set) var listUseCase: ListsUseCase = .init(listsRepository: dataContainer.listsRepository)
-    
+    var imageLoader: ImageLoader { dataContainer.imageLoader }
     private init(
         dataContainer: DataDIContainer = .init()
     ) {

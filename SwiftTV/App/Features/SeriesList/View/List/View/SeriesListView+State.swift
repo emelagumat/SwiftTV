@@ -9,6 +9,6 @@ extension SeriesListView {
 
 extension SeriesListView.State {
     init(featureState: SeriesListFeature.State) {
-        self.sections = featureState.collections.map(SerieCollection.init)
+        self.sections = []
     }
 }

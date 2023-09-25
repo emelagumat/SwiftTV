@@ -1,7 +1,7 @@
 
 import Domain
 
-public final class ListsRepositoryImpl: ListsRepository {
+public actor ListsRepositoryImpl: ListsRepository {
     private let apiService: SeriesListApiService
     private let provider: TMDBProvider
     
@@ -14,7 +14,8 @@ public final class ListsRepositoryImpl: ListsRepository {
     
     public func getNextPage(for category: MediaCollection.Category) async -> Result<MediaCollection, DomainError> {
         let nextPage = pagesDict[category, default: 1]
-        pagesDict[category] = nextPage + 1
+        let newPage = nextPage + 1
+        pagesDict[category] = newPage
         
         let endpoint = apiService.buildEndpoint(
             with: .getPage(page: nextPage, category: category)

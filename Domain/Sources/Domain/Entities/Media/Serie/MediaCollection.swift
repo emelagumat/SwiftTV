@@ -15,11 +15,6 @@ public struct MediaCollection: Equatable {
         self.items = items
         self.hasMoreItems = hasMoreItems
     }
-    
-    mutating public func addItems(_ items: [MediaItem], hasMore: Bool) {
-        self.items.append(contentsOf: items)
-        self.hasMoreItems = hasMore
-    }
 }
 
 public extension MediaCollection {

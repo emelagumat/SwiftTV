@@ -33,6 +33,6 @@ extension DateFormatter {
 
 extension String {
     static let temporalResourceBaseURL: String = {
-        "https://image.tmdb.org/t/p/"
+        "https://image.tmdb.org/t/p/w500"
     }()
 }
