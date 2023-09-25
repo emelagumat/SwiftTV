@@ -10,8 +10,20 @@ struct SeriesListView: View {
             store,
             observe: SeriesListView.State.init
         ) { viewStore in
-            Text("Hello parsed store")
-                .onAppear { viewStore.send(.onAppear) }
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
+                    ForEach(viewStore.sections) { section in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(section.title)
+                                Spacer()
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            .padding()
         }
     }
 }
