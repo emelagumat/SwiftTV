@@ -20,7 +20,6 @@ public class DiscoverRepositoryImpl: DiscoverRepository {
         )
         do {
             let response = try await provider.getResponse(from: endPoint) as PaginatedResponse<SerieResponse>
-            print(response.results?.count)
         } catch {
             print(error)
         }

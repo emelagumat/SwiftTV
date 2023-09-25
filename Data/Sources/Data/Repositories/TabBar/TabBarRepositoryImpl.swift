@@ -8,7 +8,7 @@ public final class TabBarRepositoryImpl: TabBarRepository {
     public func getTabInfo() async -> Result<Domain.TabBarInfo, Domain.DomainError> {
         .success(
             TabBarInfo(
-                defaultTab: TabItem.dashboard.buildTab(),
+                defaultTab: TabItem.series.buildTab(),
                 items: TabItem.allCases.map { $0.buildTab() }
             )
         )

@@ -5,7 +5,7 @@ struct NetworkImage: View {
     let store: StoreOf<NetworkImageFeature>
     
     init(
-        placeholder: Image = .init(uiImage: .init()),
+        placeholder: Image = .init(systemName: "x.square.fill"),
         store: StoreOf<NetworkImageFeature>? = nil
     ) {
         self.store = store ?? .init(
@@ -20,10 +20,10 @@ struct NetworkImage: View {
             observe: NetworkImage.State.init,
             send: { (viewAction: Action) in viewAction.featureAction }
         ) { viewStore in
-            (viewStore.image ?? viewStore.placeholder)
+            (viewStore.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .redacted(reason: viewStore.isLoading ? .placeholder : [])
+                .redacted(reason: viewStore.isLoading ? [.placeholder] : [])
                 .task { @MainActor in
                     viewStore.send(.onAppear)
                 }
@@ -57,6 +57,8 @@ struct NetworkImageFeature: Reducer {
                 state.hasBeenLoaded = true
                 if let uiImage {
                     state.image = Image(uiImage: uiImage)
+                } else {
+                    state.image = state.placeholder
                 }
                 return .none
             }
@@ -68,7 +70,7 @@ struct NetworkImageFeature: Reducer {
 extension NetworkImageFeature {
     struct State: Equatable, Identifiable {
         let id: UUID = .init()
-        var image: Image?
+        var image: Image = .init(uiImage: .init())
         var placeholder: Image
         var isLoading: Bool
         var hasBeenLoaded: Bool = false
@@ -86,7 +88,7 @@ extension NetworkImageFeature {
 
 extension NetworkImage {
     struct State: Equatable {
-        var image: Image?
+        var image: Image = .init(uiImage: .init())
         var placeholder: Image
         var isLoading: Bool
 
@@ -98,7 +100,7 @@ extension NetworkImage {
             )
         }
 
-        init(image: Image? = nil, placeholder: Image, isLoading: Bool) {
+        init(image: Image = .init(uiImage: .init()), placeholder: Image, isLoading: Bool) {
             self.image = image
             self.placeholder = placeholder
             self.isLoading = isLoading

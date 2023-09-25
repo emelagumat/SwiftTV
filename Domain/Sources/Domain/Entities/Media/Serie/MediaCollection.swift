@@ -25,9 +25,9 @@ public extension MediaCollection {
 
 public extension MediaCollection.Category {
     enum Serie: Equatable, Hashable, CaseIterable {
-        case airingToday
-        case onTheAir
         case popular
+        case airingToday
         case topRated
+        case onTheAir
     }
 }

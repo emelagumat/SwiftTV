@@ -29,7 +29,7 @@ extension MediaThumnailFeature {
         let id: UUID = .init()
         var item: SerieModel
         var imageLoader = NetworkImageFeature.State(
-            placeholder: .init(uiImage: .init()),
+            placeholder: .init(systemName: "x.square.fill"),
             isLoading: false
         )
     }
