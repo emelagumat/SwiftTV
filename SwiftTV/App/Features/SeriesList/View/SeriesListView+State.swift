@@ -1,12 +1,14 @@
 
 extension SeriesListView {
     struct State: Equatable {
+        var sections: [SerieCollection] = []
+        
         init() {}
     }
 }
 
 extension SeriesListView.State {
     init(featureState: SeriesListFeature.State) {
-        self.init()
+        self.sections = featureState.collections.map(SerieCollection.init)
     }
 }
