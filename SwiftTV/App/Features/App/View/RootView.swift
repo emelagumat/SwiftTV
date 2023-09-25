@@ -19,7 +19,6 @@ struct RootView: View {
             }
             .task {
                 store.send(.onAppear)
-                await DomainDIContainer().discoverUseCase.getDiscovery()
             }
         }
     }

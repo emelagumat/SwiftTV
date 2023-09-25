@@ -31,8 +31,9 @@
 		3231332C2AC0DCDB0088639E /* DomainDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323133202AC0DCDB0088639E /* DomainDIContainer.swift */; };
 		329E59B72AC1033D00D0FBAF /* SeriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59B62AC1033D00D0FBAF /* SeriesListView.swift */; };
 		329E59BA2AC1035300D0FBAF /* SeriesListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59B92AC1035300D0FBAF /* SeriesListFeature.swift */; };
-		329E59BC2AC1041C00D0FBAF /* SeriesListView+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59BB2AC1041C00D0FBAF /* SeriesListView+Feature.swift */; };
+		329E59BC2AC1041C00D0FBAF /* SeriesListView+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59BB2AC1041C00D0FBAF /* SeriesListView+State.swift */; };
 		329E59BE2AC1054A00D0FBAF /* TabBarViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59BD2AC1054A00D0FBAF /* TabBarViewBuilder.swift */; };
+		329E59C12AC17C4600D0FBAF /* SeriesListView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59C02AC17C4600D0FBAF /* SeriesListView+Action.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +80,9 @@
 		323133202AC0DCDB0088639E /* DomainDIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainDIContainer.swift; sourceTree = "<group>"; };
 		329E59B62AC1033D00D0FBAF /* SeriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListView.swift; sourceTree = "<group>"; };
 		329E59B92AC1035300D0FBAF /* SeriesListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListFeature.swift; sourceTree = "<group>"; };
-		329E59BB2AC1041C00D0FBAF /* SeriesListView+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeriesListView+Feature.swift"; sourceTree = "<group>"; };
+		329E59BB2AC1041C00D0FBAF /* SeriesListView+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeriesListView+State.swift"; sourceTree = "<group>"; };
 		329E59BD2AC1054A00D0FBAF /* TabBarViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewBuilder.swift; sourceTree = "<group>"; };
+		329E59C02AC17C4600D0FBAF /* SeriesListView+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeriesListView+Action.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,9 +269,8 @@
 		329E59B52AC1032F00D0FBAF /* SeriesList */ = {
 			isa = PBXGroup;
 			children = (
+				329E59BF2AC17C1F00D0FBAF /* View */,
 				329E59B82AC1034400D0FBAF /* Feature */,
-				329E59B62AC1033D00D0FBAF /* SeriesListView.swift */,
-				329E59BB2AC1041C00D0FBAF /* SeriesListView+Feature.swift */,
 			);
 			path = SeriesList;
 			sourceTree = "<group>";
@@ -280,6 +281,16 @@
 				329E59B92AC1035300D0FBAF /* SeriesListFeature.swift */,
 			);
 			path = Feature;
+			sourceTree = "<group>";
+		};
+		329E59BF2AC17C1F00D0FBAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				329E59B62AC1033D00D0FBAF /* SeriesListView.swift */,
+				329E59BB2AC1041C00D0FBAF /* SeriesListView+State.swift */,
+				329E59C02AC17C4600D0FBAF /* SeriesListView+Action.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,13 +434,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				329E59BC2AC1041C00D0FBAF /* SeriesListView+Feature.swift in Sources */,
+				329E59BC2AC1041C00D0FBAF /* SeriesListView+State.swift in Sources */,
 				329E59BA2AC1035300D0FBAF /* SeriesListFeature.swift in Sources */,
 				329E59BE2AC1054A00D0FBAF /* TabBarViewBuilder.swift in Sources */,
 				323133262AC0DCDB0088639E /* AppFeature.swift in Sources */,
 				323133252AC0DCDB0088639E /* RootView+Action.swift in Sources */,
 				323133232AC0DCDB0088639E /* RootView+State.swift in Sources */,
 				323133212AC0DCDB0088639E /* LoadingView.swift in Sources */,
+				329E59C12AC17C4600D0FBAF /* SeriesListView+Action.swift in Sources */,
 				323133272AC0DCDB0088639E /* AppFeature+Action.swift in Sources */,
 				323133242AC0DCDB0088639E /* RootView.swift in Sources */,
 				3231332C2AC0DCDB0088639E /* DomainDIContainer.swift in Sources */,
