@@ -19,7 +19,12 @@ struct TabBarFeature: Reducer {
                 return .none
             case .onAppear:
                 return .none
+            case .series:
+                return .none
             }
+        }
+        .ifLet(\.seriesList, action: /Action.series) {
+            SeriesListFeature()
         }
     }
 }
@@ -38,10 +43,13 @@ extension TabBarFeature {
     struct State: Equatable {
         var selectedTab: AppTabRepresentable
         var tabs: [AppTabRepresentable]
+        
+        var seriesList: SeriesListFeature.State? = .init()
     }
     
     enum Action: Equatable {
         case onAppear
         case onSelect(AppTabRepresentable)
+        case series(SeriesListFeature.Action)
     }
 }

@@ -32,6 +32,7 @@
 		329E59B72AC1033D00D0FBAF /* SeriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59B62AC1033D00D0FBAF /* SeriesListView.swift */; };
 		329E59BA2AC1035300D0FBAF /* SeriesListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59B92AC1035300D0FBAF /* SeriesListFeature.swift */; };
 		329E59BC2AC1041C00D0FBAF /* SeriesListView+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59BB2AC1041C00D0FBAF /* SeriesListView+Feature.swift */; };
+		329E59BE2AC1054A00D0FBAF /* TabBarViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59BD2AC1054A00D0FBAF /* TabBarViewBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		329E59B62AC1033D00D0FBAF /* SeriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListView.swift; sourceTree = "<group>"; };
 		329E59B92AC1035300D0FBAF /* SeriesListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListFeature.swift; sourceTree = "<group>"; };
 		329E59BB2AC1041C00D0FBAF /* SeriesListView+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeriesListView+Feature.swift"; sourceTree = "<group>"; };
+		329E59BD2AC1054A00D0FBAF /* TabBarViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 			children = (
 				3231331C2AC0DCDB0088639E /* TabBarView.swift */,
 				3231331D2AC0DCDB0088639E /* TabBarFeature.swift */,
+				329E59BD2AC1054A00D0FBAF /* TabBarViewBuilder.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 			files = (
 				329E59BC2AC1041C00D0FBAF /* SeriesListView+Feature.swift in Sources */,
 				329E59BA2AC1035300D0FBAF /* SeriesListFeature.swift in Sources */,
+				329E59BE2AC1054A00D0FBAF /* TabBarViewBuilder.swift in Sources */,
 				323133262AC0DCDB0088639E /* AppFeature.swift in Sources */,
 				323133252AC0DCDB0088639E /* RootView+Action.swift in Sources */,
 				323133232AC0DCDB0088639E /* RootView+State.swift in Sources */,

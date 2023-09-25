@@ -27,7 +27,13 @@ struct TabBarView: View {
                     ),
                     content: {
                         ForEach(viewStore.tabs) {
-                            buildTab(with: $0)
+                            buildTab(
+                                with: $0,
+                                content: TabBarViewBuilder().buildView(
+                                    for: $0,
+                                    fromStore: store
+                                )
+                            )
                         }
                     }
                 )
@@ -36,8 +42,8 @@ struct TabBarView: View {
         }
     }
     
-    private func buildTab(with representable: AppTabRepresentable) -> some View {
-        Text(representable.title)
+    private func buildTab(with representable: AppTabRepresentable, content: some View) -> some View {
+        content
             .tabItem {
                 Label(
                     title: { Text(representable.title) },
