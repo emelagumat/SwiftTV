@@ -2,6 +2,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import RemoteImage
 
 struct MediaThumbnailView: View {
     let store: StoreOf<MediaThumnailFeature>
@@ -9,12 +10,13 @@ struct MediaThumbnailView: View {
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack(alignment: .leading, spacing: 0) {
-                NetworkImage(
+                RemoteImage(
                     store: store.scope(
-                        state: \.imageLoader,
-                        action: MediaThumnailFeature.Action.imageLoader
+                        state: \.image,
+                        action: MediaThumnailFeature.Action.image
                     )
                 )
+                .resizable()
                 .frame(height: 180)
                 .clipShape(
                     RoundedRectangle(cornerRadius: 8)

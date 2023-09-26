@@ -29,6 +29,7 @@
 		3231332A2AC0DCDB0088639E /* TabBarFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3231331D2AC0DCDB0088639E /* TabBarFeature.swift */; };
 		3231332B2AC0DCDB0088639E /* DataDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3231331F2AC0DCDB0088639E /* DataDIContainer.swift */; };
 		3231332C2AC0DCDB0088639E /* DomainDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323133202AC0DCDB0088639E /* DomainDIContainer.swift */; };
+		326BB34E2AC37741006444AE /* MLDFeatures in Frameworks */ = {isa = PBXBuildFile; productRef = 326BB34D2AC37741006444AE /* MLDFeatures */; };
 		329E59B72AC1033D00D0FBAF /* SeriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59B62AC1033D00D0FBAF /* SeriesListView.swift */; };
 		329E59BA2AC1035300D0FBAF /* SeriesListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59B92AC1035300D0FBAF /* SeriesListFeature.swift */; };
 		329E59BC2AC1041C00D0FBAF /* SeriesListView+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59BB2AC1041C00D0FBAF /* SeriesListView+State.swift */; };
@@ -107,6 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				323133032AC0DAAF0088639E /* SFSymbolEnum in Frameworks */,
+				326BB34E2AC37741006444AE /* MLDFeatures in Frameworks */,
 				323133002AC0DAA10088639E /* ComposableArchitecture in Frameworks */,
 				3231330B2AC0DB7E0088639E /* Domain in Frameworks */,
 				329E59C62AC17FB400D0FBAF /* MLDCore in Frameworks */,
@@ -420,6 +422,7 @@
 				323133082AC0DB7A0088639E /* Data */,
 				3231330A2AC0DB7E0088639E /* Domain */,
 				329E59C52AC17FB400D0FBAF /* MLDCore */,
+				326BB34D2AC37741006444AE /* MLDFeatures */,
 			);
 			productName = SwiftTV;
 			productReference = 323132CE2AC0D53A0088639E /* SwiftTV.app */;
@@ -501,6 +504,7 @@
 				323133012AC0DAAF0088639E /* XCRemoteSwiftPackageReference "SFSymbolEnum" */,
 				3231332D2AC0E0FA0088639E /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */,
 				329E59DF2AC2F40400D0FBAF /* XCRemoteSwiftPackageReference "swift-power-assert" */,
+				326BB34C2AC37741006444AE /* XCLocalSwiftPackageReference "../MLDFeatures" */,
 			);
 			productRefGroup = 323132CF2AC0D53A0088639E /* Products */;
 			projectDirPath = "";
@@ -931,6 +935,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../MLDCore/MLDCore;
 		};
+		326BB34C2AC37741006444AE /* XCLocalSwiftPackageReference "../MLDFeatures" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../MLDFeatures;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -978,6 +986,10 @@
 		3231330A2AC0DB7E0088639E /* Domain */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Domain;
+		};
+		326BB34D2AC37741006444AE /* MLDFeatures */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MLDFeatures;
 		};
 		329E59C52AC17FB400D0FBAF /* MLDCore */ = {
 			isa = XCSwiftPackageProductDependency;

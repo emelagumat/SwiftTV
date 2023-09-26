@@ -31,7 +31,7 @@ struct SerieSectionFeature: Reducer {
             }
         }
         .forEach(\.thumbnails, action: /Action.thumbnail(id:action:)) {
-            MediaThumnailFeature(container: container)
+            MediaThumnailFeature()
         }
     }
 }
