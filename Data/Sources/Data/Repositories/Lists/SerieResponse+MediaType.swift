@@ -3,7 +3,8 @@ import Domain
 import Foundation
 
 extension MediaItem {
-    init(response: SerieResponse, category: Category) {
+    init?(response: SerieResponse?, category: Category) {
+        guard let response else { return nil }
         self.init(
             id: response.id ?? .zero,
             category: category,

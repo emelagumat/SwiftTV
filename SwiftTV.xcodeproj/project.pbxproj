@@ -41,6 +41,8 @@
 		329E59D62AC194AD00D0FBAF /* MediaThumnailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59D52AC194AD00D0FBAF /* MediaThumnailFeature.swift */; };
 		329E59D82AC195D900D0FBAF /* SerieSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59D72AC195D900D0FBAF /* SerieSectionView.swift */; };
 		329E59DA2AC197B100D0FBAF /* SerieSectionFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59D92AC197B100D0FBAF /* SerieSectionFeature.swift */; };
+		329E59DE2AC2CD5E00D0FBAF /* SeriesListFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59DD2AC2CD5E00D0FBAF /* SeriesListFeatureTests.swift */; };
+		329E59E12AC2F40400D0FBAF /* PowerAssert in Frameworks */ = {isa = PBXBuildFile; productRef = 329E59E02AC2F40400D0FBAF /* PowerAssert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,7 @@
 		329E59D52AC194AD00D0FBAF /* MediaThumnailFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaThumnailFeature.swift; sourceTree = "<group>"; };
 		329E59D72AC195D900D0FBAF /* SerieSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieSectionView.swift; sourceTree = "<group>"; };
 		329E59D92AC197B100D0FBAF /* SerieSectionFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieSectionFeature.swift; sourceTree = "<group>"; };
+		329E59DD2AC2CD5E00D0FBAF /* SeriesListFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesListFeatureTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				329E59E12AC2F40400D0FBAF /* PowerAssert in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +178,7 @@
 		323132E42AC0D53B0088639E /* SwiftTVTests */ = {
 			isa = PBXGroup;
 			children = (
+				329E59DC2AC2CD4A00D0FBAF /* Features */,
 				323132E52AC0D53B0088639E /* SwiftTVTests.swift */,
 			);
 			path = SwiftTVTests;
@@ -385,6 +390,14 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
+		329E59DC2AC2CD4A00D0FBAF /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				329E59DD2AC2CD5E00D0FBAF /* SeriesListFeatureTests.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -426,6 +439,9 @@
 				323132E32AC0D53B0088639E /* PBXTargetDependency */,
 			);
 			name = SwiftTVTests;
+			packageProductDependencies = (
+				329E59E02AC2F40400D0FBAF /* PowerAssert */,
+			);
 			productName = SwiftTVTests;
 			productReference = 323132E12AC0D53B0088639E /* SwiftTVTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -484,6 +500,7 @@
 				323132FE2AC0DAA10088639E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				323133012AC0DAAF0088639E /* XCRemoteSwiftPackageReference "SFSymbolEnum" */,
 				3231332D2AC0E0FA0088639E /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */,
+				329E59DF2AC2F40400D0FBAF /* XCRemoteSwiftPackageReference "swift-power-assert" */,
 			);
 			productRefGroup = 323132CF2AC0D53A0088639E /* Products */;
 			projectDirPath = "";
@@ -559,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				323132E62AC0D53B0088639E /* SwiftTVTests.swift in Sources */,
+				329E59DE2AC2CD5E00D0FBAF /* SeriesListFeatureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -932,6 +950,14 @@
 				minimumVersion = 2.3.0;
 			};
 		};
+		329E59DF2AC2F40400D0FBAF /* XCRemoteSwiftPackageReference "swift-power-assert" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/swift-power-assert.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -957,6 +983,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3231332D2AC0E0FA0088639E /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */;
 			productName = MLDCore;
+		};
+		329E59E02AC2F40400D0FBAF /* PowerAssert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 329E59DF2AC2F40400D0FBAF /* XCRemoteSwiftPackageReference "swift-power-assert" */;
+			productName = PowerAssert;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

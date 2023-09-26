@@ -15,7 +15,7 @@ class DataDIContainer {
     lazy private(set) var imageLoader = ImageLoader(provider: provider)
     
     init(
-        provider: TMDBProvider = .init(authToken: ProcessInfo.processInfo.environment["AUTH_TOKEN"]!)
+        provider: TMDBProvider = .init(authToken: ProcessInfo.processInfo.environment["AUTH_TOKEN"] ?? "")
     ) {
         self.tabBarRepository = TabBarRepositoryImpl()
         self.provider = provider
