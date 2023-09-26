@@ -16,7 +16,11 @@ struct MediaThumnailFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                .send(.imageLoader(.onGetUrl(state.item.posterStringURL)))
+                if state.imageLoader.hasBeenLoaded {
+                    .none
+                } else {
+                    .send(.imageLoader(.onGetUrl(state.item.posterStringURL)))
+                }
             default:
                 .none
             }

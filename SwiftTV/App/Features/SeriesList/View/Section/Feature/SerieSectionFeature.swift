@@ -15,12 +15,14 @@ struct SerieSectionFeature: Reducer {
             switch action {
             case .onAppear:
                 let category = state.collection.category
-                return .run { send in
-                    let results = await container.listUseCase.getNextPage(for: .series(category))
-                    if case let .success(success) = results {
-                        await send(.onLoadCollection(success))
+                if state.collection.items.isEmpty {
+                    return .run { send in
+                        let results = await container.listUseCase.getNextPage(for: .series(category))
+                        if case let .success(success) = results {
+                            await send(.onLoadCollection(success))
+                        }
                     }
-                }
+                } else { return .none }
             case let .onLoadCollection(collection):
                 state.update(with: collection)
                 return .none
@@ -69,7 +71,7 @@ extension SerieSectionFeature {
             
             self.collection = .init(
                 id: self.collection.id,
-                title: self.collection.title,
+                title: collection.category.displayName,
                 category: self.collection.category,
                 items: self.collection.items + newItems
             )

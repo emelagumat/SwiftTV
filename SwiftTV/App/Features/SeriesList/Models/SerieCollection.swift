@@ -48,7 +48,7 @@ extension SerieCollection {
     }
 }
 
-private extension MediaCollection.Category {
+extension MediaCollection.Category {
     var displayName: String {
         switch self {
         case let .series(series):

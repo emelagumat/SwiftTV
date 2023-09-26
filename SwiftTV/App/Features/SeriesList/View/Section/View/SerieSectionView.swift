@@ -10,7 +10,8 @@ struct SerieSectionView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(viewStore.collection.title)
-                        .font(.title)
+                        .font(.headline)
+                        .fontWeight(.heavy)
                     Spacer()
                 }
                 ScrollView(.horizontal) {

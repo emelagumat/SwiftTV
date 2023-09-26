@@ -29,5 +29,6 @@ struct SwiftTVApp: App {
             )
         }
         .modelContainer(sharedModelContainer)
+        .environment(\.font, .custom("Futura-Medium", size: 12))
     }
 }
