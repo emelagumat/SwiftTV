@@ -11,6 +11,8 @@ struct MediaThumnailFeature: Reducer {
                     return .send(.image(.onGetStringURL(state.item.posterStringURL)))
             case .image:
                 return .none
+            case .onTap:
+                return .none
             }
         }
         
@@ -31,6 +33,7 @@ extension MediaThumnailFeature {
 extension MediaThumnailFeature {
     enum Action: Equatable {
         case onAppear
+        case onTap
         case image(RemoteImageFeature.Action)
     }
 }

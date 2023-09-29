@@ -21,6 +21,7 @@ struct MediaThumbnailView: View {
                 .clipShape(
                     RoundedRectangle(cornerRadius: 8)
                 )
+                .onTapGesture { viewStore.send(.onTap) }
             }
             .task { viewStore.send(.onAppear) }
         }

@@ -21,8 +21,8 @@ struct SerieSectionView: View {
                                 state: \.thumbnails,
                                 action: SerieSectionFeature.Action.thumbnail(id:action:)
                             ),
-                            content: {
-                                MediaThumbnailView(store: $0)
+                            content: { store in
+                                MediaThumbnailView(store: store)
                             }
                         )
                     }

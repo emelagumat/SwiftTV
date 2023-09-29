@@ -3,6 +3,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SeriesListView: View {
+    @Namespace var namespace
     let store: StoreOf<SeriesListFeature>
     
     var body: some View {
@@ -27,15 +28,19 @@ struct SeriesListView: View {
             .task {
                 viewStore.send(.onAppear)
             }
+            .sheet(
+                  store: self.store.scope(
+                    state: \.$selectedSerie,
+                    action: { .selectedSerie($0) }
+                  )
+                ) { detailStore in
+                    SerieDetailView(namespace: namespace, store: detailStore)
+                }
         }
     }
 }
 
 #Preview {
-    SeriesListView(
-        store: .init(
-            initialState: SeriesListFeature.State(),
-            reducer: { SeriesListFeature() }
-        )
+    SeriesListView(store: .init(SeriesListFeature())
     )
 }
