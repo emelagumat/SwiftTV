@@ -7,7 +7,6 @@ class DataDIContainer {
     let tabBarRepository: TabBarRepository
     let provider: TMDBProvider
     
-    lazy private(set) var discoverRepository: DiscoverRepository = DiscoverRepositoryImpl(provider: provider)
     lazy private(set) var listsRepository: ListsRepository = ListsRepositoryImpl(
         apiService: SeriesListApiService(),
         provider: provider

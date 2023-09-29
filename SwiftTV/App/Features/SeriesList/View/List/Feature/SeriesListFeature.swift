@@ -2,25 +2,23 @@
 import ComposableArchitecture
 import Domain
 import MLDCore
+import Foundation
 
 struct SeriesListFeature: Reducer {
-    private let container: DomainDIContainer
-    
-    init(container: DomainDIContainer = .shared) {
-        self.container = container
-    }
+    @Dependency(\.listClient) var listClient
     
     var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {
             case .onAppear:
+                Task { try? await listClient.getNextPage() }
                 return .none
             case .section:
                 return .none
             }
         }
         .forEach(\.collectionStates, action: /Action.section(id:action:)) {
-            SerieSectionFeature(container: container)
+            SerieSectionFeature()
         }
     }
 }

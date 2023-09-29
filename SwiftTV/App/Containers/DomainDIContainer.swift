@@ -11,7 +11,6 @@ class DomainDIContainer {
         tabBarRepository: dataContainer.tabBarRepository
     )
     
-    lazy private(set) var discoverUseCase: DiscoverUseCase = .init(discoverRepository: dataContainer.discoverRepository)
     lazy private(set) var listUseCase: ListsUseCase = .init(listsRepository: dataContainer.listsRepository)
     private init(
         dataContainer: DataDIContainer = .init()

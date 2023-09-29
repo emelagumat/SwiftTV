@@ -35,7 +35,7 @@ struct SeriesListView: View {
     SeriesListView(
         store: .init(
             initialState: SeriesListFeature.State(),
-            reducer: { SeriesListFeature(container: .shared) }
+            reducer: { SeriesListFeature() }
         )
     )
 }

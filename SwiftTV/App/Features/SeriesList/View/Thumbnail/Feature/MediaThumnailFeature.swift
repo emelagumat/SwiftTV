@@ -1,7 +1,7 @@
 
 import ComposableArchitecture
 import SwiftUI
-import RemoteImage
+import MLDFeatures
 
 struct MediaThumnailFeature: Reducer {
     var body: some Reducer<State, Action> {
@@ -9,7 +9,7 @@ struct MediaThumnailFeature: Reducer {
             switch action {
             case .onAppear:
                     return .send(.image(.onGetStringURL(state.item.posterStringURL)))
-            case let .image(image):
+            case .image:
                 return .none
             }
         }

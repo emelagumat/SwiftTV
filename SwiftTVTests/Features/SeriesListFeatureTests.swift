@@ -1,6 +1,7 @@
 
 import XCTest
 import PowerAssert
+import ComposableArchitecture
 
 @testable import SwiftTV
 
@@ -11,7 +12,11 @@ final class SeriesListFeatureTests: XCTestCase {
     
     override func setUpWithError() throws {
         state = .init()
-        reducer = .init(container: .mock)
+        let feature = withDependencies({ $0.listClient = .mock }, operation: {
+            SeriesListFeature()
+        })
+        
+        reducer = feature
     }
     
     func test_InitialState() throws {
@@ -23,4 +28,12 @@ final class SeriesListFeatureTests: XCTestCase {
         _ = reducer.reduce(into: &state, action: .onAppear)
         #assert(initialState == state)
     }
+}
+
+extension ListClient {
+    static let mock = ListClient(
+        getNextPage: {
+            .failure(.unknown)
+        }
+    )
 }

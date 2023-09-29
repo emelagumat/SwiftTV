@@ -2,7 +2,7 @@
 
 import SwiftUI
 import ComposableArchitecture
-import RemoteImage
+import MLDFeatures
 
 struct MediaThumbnailView: View {
     let store: StoreOf<MediaThumnailFeature>
@@ -22,7 +22,6 @@ struct MediaThumbnailView: View {
                     RoundedRectangle(cornerRadius: 8)
                 )
             }
-//            .frame(width: 80)
             .task { viewStore.send(.onAppear) }
         }
     }
