@@ -21,12 +21,7 @@ extension SerieDetailFeature {
         var model: SerieModel
         
         init() {
-            model = SerieModel(
-                id: "id",
-                name: "name",
-                backdropStringURL: "",
-                posterStringURL: ""
-            )
+            model = SerieModel.empty
         }
         
         init(model: SerieModel) {

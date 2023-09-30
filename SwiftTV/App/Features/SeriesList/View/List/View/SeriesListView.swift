@@ -3,7 +3,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SeriesListView: View {
-    @Namespace var namespace
     let store: StoreOf<SeriesListFeature>
     
     var body: some View {
@@ -34,7 +33,7 @@ struct SeriesListView: View {
                     action: { .selectedSerie($0) }
                   )
                 ) { detailStore in
-                    SerieDetailView(namespace: namespace, store: detailStore)
+                    SerieDetailView(store: detailStore)
                 }
         }
     }

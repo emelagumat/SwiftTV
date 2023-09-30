@@ -11,8 +11,10 @@ extension SerieModel {
     static let empty = SerieModel(
         id: "",
         name: "",
+        overview: "",
         backdropStringURL: "",
-        posterStringURL: ""
+        posterStringURL: "", 
+        rate: .init(popularity: .zero, voteAverage: .zero, totalVotes: .zero)
     )
 }
 

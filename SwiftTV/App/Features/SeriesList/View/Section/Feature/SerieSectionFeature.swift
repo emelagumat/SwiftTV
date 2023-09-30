@@ -63,8 +63,10 @@ extension SerieSectionFeature {
                 SerieModel(
                     id: String($0.id),
                     name: $0.name,
+                    overview: $0.overview,
                     backdropStringURL: $0.backdropURL,
-                    posterStringURL: $0.posterURL
+                    posterStringURL: $0.posterURL,
+                    rate: .init($0.rate)
                 )
             }
                 .filter { model in !self.collection.items.contains(where: { $0.id == model.id })}

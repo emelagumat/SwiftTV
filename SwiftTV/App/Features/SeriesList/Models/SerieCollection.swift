@@ -19,8 +19,26 @@ struct SerieCollection: Identifiable, Equatable {
 struct SerieModel: Identifiable, Equatable {
     let id: String
     let name: String
+    let overview: String
     let backdropStringURL: String
     let posterStringURL: String
+    let rate: RateModel
+}
+
+struct RateModel: Equatable {
+    let popularity: Double
+    let voteAverage: Double
+    let totalVotes: Int
+}
+
+extension RateModel {
+    init(_ rate: MediaItem.Rate) {
+        self.init(
+            popularity: rate.popularity,
+            voteAverage: rate.voteAverage,
+            totalVotes: rate.totalVotes
+        )
+    }
 }
 
 extension SerieCollection {
@@ -40,8 +58,10 @@ extension SerieCollection {
                 SerieModel(
                     id: String($0.id),
                     name: $0.name,
+                    overview: $0.overview,
                     backdropStringURL: $0.backdropURL,
-                    posterStringURL: $0.posterURL
+                    posterStringURL: $0.posterURL,
+                    rate: .init($0.rate)
                 )
             }
         )

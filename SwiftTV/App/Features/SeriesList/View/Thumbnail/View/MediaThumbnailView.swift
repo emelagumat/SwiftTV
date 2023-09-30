@@ -50,7 +50,8 @@ extension SerieModel {
     static let mock = SerieModel(
         id: "-",
         name: "Lost",
+        overview: "$0.overview",
         backdropStringURL: "https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg",
-        posterStringURL: "https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg"
+        posterStringURL: "https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg", rate: .init(popularity: .zero, voteAverage: .zero, totalVotes: .zero)
     )
 }
