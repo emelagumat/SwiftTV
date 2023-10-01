@@ -1,4 +1,3 @@
-
 extension SeriesListView {
     enum Action: Equatable {
         case onAppear

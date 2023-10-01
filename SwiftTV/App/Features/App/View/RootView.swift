@@ -1,12 +1,11 @@
-
 import ComposableArchitecture
 import SwiftUI
 
 struct RootView: View {
     let store: StoreOf<AppFeature>
-    
+
     var body: some View {
-        WithViewStore(store, observe: \.hasLaunched) { viewStore in
+        WithViewStore(store, observe: \.hasLaunched) { _ in
             IfLetStore(
                 store.scope(
                     state: \.tabBar,
@@ -14,6 +13,8 @@ struct RootView: View {
                 )
             ) {
                 TabBarView(store: $0)
+                    .tint(.appAccent)
+                    .foregroundStyle(Color.appText)
             } else: {
                 LoadingView()
             }
@@ -27,7 +28,7 @@ struct RootView: View {
 #Preview {
     RootView(
         store: .init(
-            initialState: AppFeature.State(), 
+            initialState: AppFeature.State(),
             reducer: { AppFeature() }
         )
     )

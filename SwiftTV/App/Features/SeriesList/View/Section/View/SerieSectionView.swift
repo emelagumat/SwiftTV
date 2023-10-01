@@ -1,17 +1,17 @@
-
 import SwiftUI
 import ComposableArchitecture
 
 struct SerieSectionView: View {
     let store: StoreOf<SerieSectionFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack(alignment: .leading) {
                 HStack {
                     Text(viewStore.collection.title)
-                        .font(.headline)
+                        .font(.large)
                         .fontWeight(.heavy)
+                        .padding()
                     Spacer()
                 }
                 ScrollView(.horizontal) {
@@ -26,10 +26,11 @@ struct SerieSectionView: View {
                                     .transition(.opacity)
                             }
                         )
-                        
+
                         ProgressView()
                             .onAppear { viewStore.send(.onReachListEnd) }
                     }
+                    .padding(.leading)
                 }
             }
             .task { viewStore.send(.onAppear) }

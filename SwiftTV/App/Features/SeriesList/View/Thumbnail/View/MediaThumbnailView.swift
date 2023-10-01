@@ -6,7 +6,7 @@ import MLDFeatures
 
 struct MediaThumbnailView: View {
     let store: StoreOf<MediaThumnailFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack(alignment: .leading, spacing: 0) {
@@ -17,6 +17,7 @@ struct MediaThumbnailView: View {
                     )
                 )
                 .resizable()
+                .foregroundStyle(.appDisabled)
                 .task { viewStore.send(.onAppear) }
                 .frame(height: 180)
                 .clipShape(
@@ -27,7 +28,6 @@ struct MediaThumbnailView: View {
         }
     }
 }
-
 
 #Preview("List") {
     SerieSectionView(
@@ -54,6 +54,6 @@ extension SerieModel {
         backdropStringURL: "https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg",
         posterStringURL: "https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg",
         genders: [],
-        rate: .init(popularity: .zero, voteAverage: .zero, totalVotes: .zero)
+        rate: .init(images: [], totalVotes: .zero)
     )
 }

@@ -1,11 +1,10 @@
-
 import ComposableArchitecture
 import SwiftUI
 import MLDFeatures
 
 struct SerieDetailView: View {
     let store: StoreOf<SerieDetailFeature>
-    
+
     var body: some View {
         WithViewStore(
             store,
@@ -17,14 +16,21 @@ struct SerieDetailView: View {
                     .frame(height: 32)
                 ScrollView {
                     Text(viewStore.model.overview)
+                        .padding()
+                        .frame(maxWidth: .infinity)
                     Spacer()
                 }
+                .background(.appSurface)
+                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 8, height: 8), style: .circular))
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
             }
+            .background(.appBackground)
+            .foregroundStyle(.appText)
+            .font(.medium)
         }
     }
-    
+
     private func makeHeader(with viewStore: ViewStoreOf<SerieDetailFeature>) -> some View {
         VStack {
             RemoteImage(
@@ -38,66 +44,35 @@ struct SerieDetailView: View {
             .resizable()
             HStack {
                 Text(viewStore.model.name)
-                    .font(.title2)
+                    .font(.large)
                 Spacer()
                 makeRating(with: viewStore.model.rate)
             }
             .padding(.horizontal)
-            HStack {
-                Spacer()
-                ForEach(viewStore.model.genders) { gender in
-                    GenderCapsule(text: gender.name)
-                }
-            }
-            .padding([.horizontal, .bottom])
-        }
-    }
-    
-    private func makeRating(with rate: RateModel) -> some View {
-        let stars = rate.voteAverage / 10 * 5
-        
-        return VStack {
-            HStack {
-                ForEach(1...5, id: \.self) { index in
-                    switch Double(index) {
-                    case (0...stars):
-                        Image(systemName: "star.fill")
-                    case let double where (0..<(stars + 0.51)).contains(double):
-                        Image(systemName: "star.leadinghalf.filled")
-                    default:
-                        Image(systemName: "star")
+            if !viewStore.model.genders.isEmpty {
+                HStack {
+                    Spacer()
+                    ForEach(viewStore.model.genders) { gender in
+                        GenreCapsule(text: gender.name)
                     }
                 }
+                .padding([.horizontal])
             }
-            .foregroundColor(.accentColor)
         }
     }
-}
 
-struct GenderCapsule: View {
-    let text: String
-//    let isSelected: Bool
-    
-    var body: some View {
-        Text(text)
-            .foregroundStyle(.background)
-            .padding(.vertical, 4)
-            .padding(.horizontal, 8)
-            .lineLimit(1)
-            .background(
-                Capsule(style: .circular)
-                    .foregroundStyle(.primary)
-            )
+    private func makeRating(with rate: RateModel) -> some View {
+        VStack {
+            HStack {
+                ForEach(rate.images) { representable in
+                    Image(systemName: representable.imageName)
+                }
+            }
+            .foregroundColor(.appAccent)
+        }
     }
 }
 
 #Preview {
-    SerieDetailView(
-        store: .init(
-            initialState: SerieDetailFeature.State(),
-            reducer: {
-                SerieDetailFeature()
-            }
-        )
-    )
+    SerieDetailView(store: .init(SerieDetailFeature()))
 }

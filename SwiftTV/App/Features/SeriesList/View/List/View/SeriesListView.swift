@@ -1,18 +1,20 @@
-
 import SwiftUI
 import ComposableArchitecture
 
 struct SeriesListView: View {
     let store: StoreOf<SeriesListFeature>
     @SwiftUI.State var isFiltersActive = false
-    
+
     var body: some View {
         WithViewStore(
             store,
             observe: SeriesListView.State.init
         ) { viewStore in
             VStack {
-                filtersView(viewStore)
+                ListFilterView(
+                    isActive: $isFiltersActive,
+                    items: viewStore.genres
+                )
                 ScrollView(.vertical) {
                     VStack(alignment: .leading, spacing: 32) {
                         ForEachStore(
@@ -22,12 +24,10 @@ struct SeriesListView: View {
                             ),
                             content: { sectionStore in
                                 SerieSectionView(store: sectionStore)
-                                    .transition(.opacity)
                             }
                         )
                     }
                 }
-                .padding()
                 .task {
                     viewStore.send(.onAppear)
                 }
@@ -40,43 +40,8 @@ struct SeriesListView: View {
                         SerieDetailView(store: detailStore)
                     }
             }
+            .scrollIndicators(.never)
         }
-    }
-    
-    func filtersView(_ viewStore: ViewStore<SeriesListView.State, SeriesListFeature.Action>) -> some View {
-        HStack {
-            if isFiltersActive {
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(viewStore.genres) { genre in
-                            GenderCapsule(text: genre.genre.name)
-                                .onTapGesture { viewStore.send(.onGenreTapped(genre)) }
-                        }
-                    }
-                }
-                .scrollIndicators(.never)
-                .transition(
-                    AsymmetricTransition(
-                        insertion: .push(from: .trailing),
-                        removal: .push(from: .leading)
-                    )
-                )
-            } else {
-                Spacer()
-            }
-            Image(systemName: isFiltersActive ? "x.circle" : "slider.horizontal.3")
-                .font(.title3)
-                .symbolEffect(.bounce, value: isFiltersActive)
-                .animation(.easeInOut, value: isFiltersActive)
-                .transition(.symbolEffect)
-            
-                .onTapGesture {
-                    withAnimation {
-                        isFiltersActive.toggle()
-                    }
-                }
-        }
-        .padding()//[.top, .horizontal])
     }
 }
 

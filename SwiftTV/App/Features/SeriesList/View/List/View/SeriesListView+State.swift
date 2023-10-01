@@ -1,10 +1,7 @@
-
 extension SeriesListView {
     struct State: Equatable {
         var genres: [FilterItem] = []
         var sections: [SerieCollection] = []
-        
-        init() {}
     }
 }
 

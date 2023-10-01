@@ -1,4 +1,3 @@
-
 import Domain
 
 extension AppFeature {
@@ -20,7 +19,7 @@ extension AppFeature.State {
                 selectedTab: AppTabRepresentable(info.defaultTab),
                 tabs: info.items.map { AppTabRepresentable($0) }
             )
-        case .failure(_):
+        case .failure:
             break
         default:
             break

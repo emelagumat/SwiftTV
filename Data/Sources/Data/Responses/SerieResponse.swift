@@ -1,4 +1,3 @@
-
 struct SerieResponse: Codable {
     let backdropPath, firstAirDate: String?
     let genreIDS: [Int]??
@@ -35,7 +34,7 @@ struct GenreResponse: Codable {
     let name: String
 }
 import Domain
-extension MediaGender {
+extension MediaGenre {
     init(_ response: GenreResponse) {
         self.init(id: response.id, name: response.name)
     }

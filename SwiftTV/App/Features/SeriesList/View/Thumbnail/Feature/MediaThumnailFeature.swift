@@ -1,4 +1,3 @@
-
 import ComposableArchitecture
 import SwiftUI
 import MLDFeatures
@@ -15,7 +14,7 @@ struct MediaThumnailFeature: Reducer {
                 return .none
             }
         }
-        
+
         Scope(state: \.image, action: /Action.image) {
             RemoteImageFeature()
         }

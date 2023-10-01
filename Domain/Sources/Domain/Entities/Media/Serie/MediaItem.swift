@@ -1,34 +1,32 @@
-
 import Foundation
 
-public struct MediaGender: Equatable {
+public struct MediaGenre: Equatable {
     public let id: Int
     public let name: String
-    
+
     public init(id: Int, name: String) {
         self.id = id
         self.name = name
     }
-    
 }
 
 public struct MediaItem: Equatable {
     public let id: Int
     public let category: Category
     public let firstAirDate: Date?
-    public let genres: [MediaGender]
+    public let genres: [MediaGenre]
     public let name: String
     public let originCountryCode: [String]
     public let overview: String
     public let backdropURL: String
     public let posterURL: String
     public let rate: Rate
-    
+
     public init(
         id: Int,
         category: MediaItem.Category,
         firstAirDate: Date? = nil,
-        genres: [MediaGender],
+        genres: [MediaGenre],
         name: String,
         originCountryCode: [String],
         overview: String,
@@ -55,7 +53,7 @@ public extension MediaItem {
         public let popularity: Double
         public let voteAverage: Double
         public let totalVotes: Int
-        
+
         public init(
             popularity: Double,
             voteAverage: Double,

@@ -6,19 +6,11 @@ import ComposableArchitecture
 
 @main
 struct SwiftTVApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    init() {
+        setupAppearance()
 
+    }
     var body: some Scene {
         WindowGroup {
             RootView(
@@ -27,8 +19,20 @@ struct SwiftTVApp: App {
                     reducer: { AppFeature() }
                 )
             )
+            .tint(.appAccent)
+            .foregroundStyle(Color.appText)
+
         }
-        .modelContainer(sharedModelContainer)
-        .environment(\.font, .custom("Futura-Medium", size: 12))
+        .environment(\.font, .medium)
+    }
+}
+
+private extension SwiftTVApp {
+    func setupAppearance() {
+        UITabBar.appearance().unselectedItemTintColor = .appDisabled
+
+        let fontAtributes = [NSAttributedString.Key.font: UIFont.init(name: "Futura-Medium", size: 12)!]
+        UITabBarItem.appearance()
+            .setTitleTextAttributes(fontAtributes, for: .normal)
     }
 }

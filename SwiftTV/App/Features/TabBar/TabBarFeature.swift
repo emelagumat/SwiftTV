@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TabBarFeature: Reducer {
     let container: DomainDIContainer
-    
+
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
@@ -33,7 +33,7 @@ struct AppTabRepresentable: Identifiable, Hashable, Equatable {
     let id: String
     let title: LocalizedStringKey
     let symbolName: String
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
@@ -43,10 +43,10 @@ extension TabBarFeature {
     struct State: Equatable {
         var selectedTab: AppTabRepresentable
         var tabs: [AppTabRepresentable]
-        
+
         var seriesList: SeriesListFeature.State? = .init()
     }
-    
+
     enum Action: Equatable {
         case onAppear
         case onSelect(AppTabRepresentable)

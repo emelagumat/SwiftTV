@@ -1,9 +1,8 @@
-
 import Domain
 import Foundation
 
 extension MediaItem {
-    init?(response: SerieResponse?, category: Category, genders: [MediaGender]) {
+    init?(response: SerieResponse?, category: Category, genders: [MediaGenre]) {
         guard let response else { return nil }
         let g = (response.genreIDS ?? [])?.compactMap { genreID in genders.first(where: { $0.id == genreID}) } ?? []
         self.init(

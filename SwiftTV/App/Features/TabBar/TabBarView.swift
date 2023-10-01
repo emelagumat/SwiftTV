@@ -11,7 +11,7 @@ import SwiftUI
 
 struct TabBarView: View {
     let store: StoreOf<TabBarFeature>
-    
+
     var body: some View {
         WithViewStore(
             store,
@@ -34,24 +34,27 @@ struct TabBarView: View {
                                     fromStore: store
                                 )
                             )
+                            .background(.appBackground)
                         }
                     }
                 )
             }
-            
+
         }
     }
-    
+
     private func buildTab(with representable: AppTabRepresentable, content: some View) -> some View {
         content
             .tabItem {
                 Label(
-                    title: { Text(representable.title) },
+                    title: {
+                        Text(representable.title)
+                            .font(.extraSmall)
+                    },
                     icon: {
                         Image(systemName: representable.symbolName)
                     }
                 )
-                
             }
             .tag(representable)
     }
@@ -73,7 +76,7 @@ extension TabBarFeature.State {
             title: "Tab",
             symbolName: "circle"
         )
-        
+
         return .init(
             selectedTab: tab, tabs: [tab]
         )

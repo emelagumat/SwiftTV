@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "Data",
-            targets: ["Data"]),
+            targets: ["Data"])
     ],
     dependencies: [
         .package(path: "../Domain"),
@@ -17,7 +17,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Data", 
+            name: "Data",
             dependencies: [
                 "Domain",
                 .product(name: "APIClient", package: "MLDCore")
@@ -25,6 +25,6 @@ let package = Package(
         ),
         .testTarget(
             name: "DataTests",
-            dependencies: ["Data"]),
+            dependencies: ["Data"])
     ]
 )

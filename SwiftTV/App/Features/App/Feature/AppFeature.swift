@@ -10,11 +10,11 @@ import Domain
 
 struct AppFeature: Reducer {
     let container: DomainDIContainer
-    
+
     init(container: DomainDIContainer = .shared) {
         self.container = container
     }
-    
+
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {

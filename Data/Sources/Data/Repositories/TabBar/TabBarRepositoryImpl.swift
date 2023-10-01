@@ -1,10 +1,9 @@
-
 import Domain
 
 public final class TabBarRepositoryImpl: TabBarRepository {
-    
+
     public init() {}
-    
+
     public func getTabInfo() async -> Result<Domain.TabBarInfo, Domain.DomainError> {
         .success(
             TabBarInfo(
@@ -19,7 +18,7 @@ private enum TabItem: CaseIterable {
     case series
     case dashboard
     case two
-    
+
     var title: String {
         switch self {
         case .series:
@@ -30,7 +29,7 @@ private enum TabItem: CaseIterable {
             "Two"
         }
     }
-    
+
     var symbolName: String {
         switch self {
         case .series:
@@ -41,7 +40,7 @@ private enum TabItem: CaseIterable {
             "2.circle"
         }
     }
-    
+
     func buildTab() -> ApplicationTab {
         .init(
             id: "\(self)",
