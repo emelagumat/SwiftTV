@@ -1,9 +1,8 @@
-
 import ComposableArchitecture
 
 struct SerieDetailFeature: Reducer {
     var body: some ReducerOf<Self> {
-        Reduce<State, Action> { state, action in
+        Reduce<State, Action> { _, action in
             switch action {
             case .onAppear:
                 return .none
@@ -16,11 +15,11 @@ struct SerieDetailFeature: Reducer {
 extension SerieDetailFeature {
     struct State: FeatureState {
         var model: SerieModel
-        
+
         init() {
             model = SerieModel.empty
         }
-        
+
         init(model: SerieModel) {
             self.model = model
         }

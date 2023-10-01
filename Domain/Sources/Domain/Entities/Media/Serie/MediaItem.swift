@@ -1,10 +1,9 @@
-
 import Foundation
 
 public struct MediaGenre: Equatable {
     public let id: Int
     public let name: String
-    
+
     public init(id: Int, name: String) {
         self.id = id
         self.name = name
@@ -22,7 +21,7 @@ public struct MediaItem: Equatable {
     public let backdropURL: String
     public let posterURL: String
     public let rate: Rate
-    
+
     public init(
         id: Int,
         category: MediaItem.Category,
@@ -54,7 +53,7 @@ public extension MediaItem {
         public let popularity: Double
         public let voteAverage: Double
         public let totalVotes: Int
-        
+
         public init(
             popularity: Double,
             voteAverage: Double,

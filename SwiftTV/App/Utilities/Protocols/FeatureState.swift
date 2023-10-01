@@ -1,4 +1,3 @@
-
 import ComposableArchitecture
 
 protocol FeatureState: Equatable {

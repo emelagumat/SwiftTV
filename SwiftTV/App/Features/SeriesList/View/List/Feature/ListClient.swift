@@ -1,4 +1,3 @@
-
 import Domain
 import ComposableArchitecture
 
@@ -28,7 +27,6 @@ enum ListClientKey: DependencyKey {
         }
     )
 }
-
 
 extension DependencyValues {
     var listClient: ListClient {

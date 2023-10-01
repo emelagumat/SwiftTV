@@ -7,6 +7,6 @@
 
 extension RootView {
     struct State: Equatable {
-        
+
     }
 }

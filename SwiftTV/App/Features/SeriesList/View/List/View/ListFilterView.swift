@@ -5,7 +5,7 @@ import SwiftUI
 struct ListFilterView: View {
     @Binding var isActive: Bool
     let items: [FilterItem]
-    
+
     var body: some View {
         HStack {
             if isActive {

@@ -1,4 +1,3 @@
-
 import SwiftUI
 import Domain
 
@@ -7,19 +6,12 @@ struct SerieCollection: Identifiable, Equatable {
     let title: String
     let category: MediaCollection.Category.Serie
     let items: [SerieModel]
-    
-    init(id: String, title: String, category: MediaCollection.Category.Serie, items: [SerieModel]) {
-        self.id = id
-        self.title = title
-        self.category = category
-        self.items = items
-    }
 }
 
 extension SerieCollection {
     init(mediaCollection: MediaCollection) {
         let serieCategory: MediaCollection.Category.Serie
-        
+
         if case let .series(category) = mediaCollection.category {
             serieCategory = category
         } else {

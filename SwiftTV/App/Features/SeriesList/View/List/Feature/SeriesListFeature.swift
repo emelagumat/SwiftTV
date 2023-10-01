@@ -1,4 +1,3 @@
-
 import ComposableArchitecture
 import Domain
 import MLDCore
@@ -6,7 +5,7 @@ import Foundation
 
 struct SeriesListFeature: Reducer {
     @Dependency(\.listClient) var listClient
-    
+
     var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {
@@ -19,7 +18,7 @@ struct SeriesListFeature: Reducer {
                 } else {
                     return .none
                 }
-                
+
             case let .section(_, action):
                 switch action {
                 case let .thumbnail(id, action):
@@ -37,14 +36,14 @@ struct SeriesListFeature: Reducer {
             case let .onSelect(serie):
                 state.selectedSerie = .init(model: serie)
                 return .none
-                
+
             case .selectedSerie:
                 return .none
-                
+
             case let .onGenresLoaded(genres):
                 state.genres = genres.map { FilterItem(genre: $0) }
                 return .none
-                
+
             case var .onGenreTapped(genre):
                 if let index = state.genres.firstIndex(of: genre) {
                     genre.isSelected.toggle()
@@ -67,9 +66,9 @@ extension SeriesListFeature {
     struct State: FeatureState {
         var collectionStates: IdentifiedArrayOf<SerieSectionFeature.State> = []
         var genres: [FilterItem] = []
-        
+
         @PresentationState var selectedSerie: SerieDetailFeature.State?
-        
+
         init() {
             let collections = MediaCollection.Category.Serie.allCases.map {
                 MediaCollection(

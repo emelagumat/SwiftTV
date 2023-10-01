@@ -1,11 +1,10 @@
-
 import SwiftUI
 import ComposableArchitecture
 
 struct SeriesListView: View {
     let store: StoreOf<SeriesListFeature>
     @SwiftUI.State var isFiltersActive = false
-    
+
     var body: some View {
         WithViewStore(
             store,

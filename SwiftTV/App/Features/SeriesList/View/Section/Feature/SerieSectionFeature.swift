@@ -1,15 +1,14 @@
-
 import ComposableArchitecture
 import Foundation
 import Domain
 
 struct SerieSectionFeature: Reducer {
     let container: DomainDIContainer
-    
+
     init(container: DomainDIContainer = .shared) {
         self.container = container
     }
-    
+
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
@@ -32,7 +31,7 @@ struct SerieSectionFeature: Reducer {
                 guard
                     !state.thumbnails.isEmpty
                 else { return .none }
-                
+
                 let category = state.collection.category
                 return .run { send in
                     let results = await container.listUseCase.getNextPage(for: .series(category))
@@ -53,7 +52,7 @@ extension SerieSectionFeature {
         let id: UUID
         var collection: SerieCollection
         var thumbnails: IdentifiedArrayOf<MediaThumnailFeature.State> = []
-        
+
         init() {
             self.id = .init()
             self.collection = .init(
@@ -63,13 +62,13 @@ extension SerieSectionFeature {
                 items: []
             )
         }
-        
+
         init(collection: SerieCollection) {
             self.id = .init()
             self.collection = collection
             self.thumbnails = .init(uniqueElements: collection.items.map { MediaThumnailFeature.State(item: $0) })
         }
-        
+
         mutating func update(with collection: MediaCollection) {
             let newItems =  collection.items.map {
                 SerieModel(
@@ -83,7 +82,7 @@ extension SerieSectionFeature {
                 )
             }
                 .filter { model in !self.collection.items.contains(where: { $0.id == model.id })}
-            
+
             self.collection = .init(
                 id: self.collection.id,
                 title: collection.category.displayName,

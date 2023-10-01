@@ -1,4 +1,3 @@
-
 import ComposableArchitecture
 
 extension SerieModel {
@@ -13,7 +12,7 @@ extension SerieModel {
         name: "",
         overview: "",
         backdropStringURL: "",
-        posterStringURL: "", 
+        posterStringURL: "",
         genders: [],
         rate: .init(images: [], totalVotes: .zero)
     )

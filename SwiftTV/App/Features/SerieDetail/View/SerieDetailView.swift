@@ -1,11 +1,10 @@
-
 import ComposableArchitecture
 import SwiftUI
 import MLDFeatures
 
 struct SerieDetailView: View {
     let store: StoreOf<SerieDetailFeature>
-    
+
     var body: some View {
         WithViewStore(
             store,
@@ -31,7 +30,7 @@ struct SerieDetailView: View {
             .font(.medium)
         }
     }
-    
+
     private func makeHeader(with viewStore: ViewStoreOf<SerieDetailFeature>) -> some View {
         VStack {
             RemoteImage(
@@ -61,7 +60,7 @@ struct SerieDetailView: View {
             }
         }
     }
-    
+
     private func makeRating(with rate: RateModel) -> some View {
         VStack {
             HStack {

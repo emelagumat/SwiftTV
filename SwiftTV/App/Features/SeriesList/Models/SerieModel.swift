@@ -1,4 +1,3 @@
-
 import Domain
 
 struct SerieModel: Identifiable, Equatable {

@@ -1,4 +1,3 @@
-
 struct SerieResponse: Codable {
     let backdropPath, firstAirDate: String?
     let genreIDS: [Int]??

@@ -1,4 +1,3 @@
-
 import Domain
 import ComposableArchitecture
 
@@ -21,18 +20,18 @@ extension RateModel {
                     imageName: imageName
                 )
             }
-        
+
         self.init(
             images: icons,
             totalVotes: rate.totalVotes
         )
     }
-    
+
     private static func makeRatingImages(with rate: MediaItem.Rate) -> [String] {
         let rateBase: Double = 10
         let totalStars: Double = 5
         let stars = rate.voteAverage / rateBase * totalStars
-        
+
         return (1...5).map { index in
             switch Double(index) {
             case (0...stars):

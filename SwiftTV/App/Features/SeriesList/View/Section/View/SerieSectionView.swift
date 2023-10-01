@@ -1,10 +1,9 @@
-
 import SwiftUI
 import ComposableArchitecture
 
 struct SerieSectionView: View {
     let store: StoreOf<SerieSectionFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack(alignment: .leading) {
@@ -27,7 +26,7 @@ struct SerieSectionView: View {
                                     .transition(.opacity)
                             }
                         )
-                        
+
                         ProgressView()
                             .onAppear { viewStore.send(.onReachListEnd) }
                     }

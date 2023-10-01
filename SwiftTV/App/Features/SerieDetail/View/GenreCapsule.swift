@@ -1,12 +1,8 @@
-
 import SwiftUI
-
-
-
 
 struct GenreCapsule: View {
     let text: String
-    
+
     var body: some View {
         Text(text)
             .foregroundStyle(.background)

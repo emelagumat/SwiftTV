@@ -6,7 +6,7 @@ import MLDFeatures
 
 struct MediaThumbnailView: View {
     let store: StoreOf<MediaThumnailFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack(alignment: .leading, spacing: 0) {
@@ -28,7 +28,6 @@ struct MediaThumbnailView: View {
         }
     }
 }
-
 
 #Preview("List") {
     SerieSectionView(
