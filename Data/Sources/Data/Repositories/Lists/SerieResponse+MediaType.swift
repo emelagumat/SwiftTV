@@ -3,13 +3,14 @@ import Domain
 import Foundation
 
 extension MediaItem {
-    init?(response: SerieResponse?, category: Category) {
+    init?(response: SerieResponse?, category: Category, genders: [MediaGender]) {
         guard let response else { return nil }
+        let g = (response.genreIDS ?? [])?.compactMap { genreID in genders.first(where: { $0.id == genreID}) } ?? []
         self.init(
             id: response.id ?? .zero,
             category: category,
             firstAirDate: DateFormatter.tmdbApi.date(from: response.firstAirDate ?? ""),
-            genres: (response.genreIDS ?? [])?.compactMap { $0 } ?? [],
+            genres: (response.genreIDS ?? [])?.compactMap { genreID in genders.first(where: { $0.id == genreID}) } ?? [],
             name: response.name ?? "",
             originCountryCode: (response.originCountry ?? []).compactMap { $0 },
             overview: response.overview ?? "",

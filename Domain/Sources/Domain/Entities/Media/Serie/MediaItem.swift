@@ -1,11 +1,22 @@
 
 import Foundation
 
+public struct MediaGender: Equatable {
+    public let id: Int
+    public let name: String
+    
+    public init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+    
+}
+
 public struct MediaItem: Equatable {
     public let id: Int
     public let category: Category
     public let firstAirDate: Date?
-    public let genres: [Int]
+    public let genres: [MediaGender]
     public let name: String
     public let originCountryCode: [String]
     public let overview: String
@@ -17,7 +28,7 @@ public struct MediaItem: Equatable {
         id: Int,
         category: MediaItem.Category,
         firstAirDate: Date? = nil,
-        genres: [Int],
+        genres: [MediaGender],
         name: String,
         originCountryCode: [String],
         overview: String,

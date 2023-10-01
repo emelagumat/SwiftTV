@@ -8,7 +8,8 @@ class DataDIContainer {
     let provider: TMDBProvider
     
     lazy private(set) var listsRepository: ListsRepository = ListsRepositoryImpl(
-        apiService: SeriesListApiService(),
+        listApiService: SeriesListApiService(),
+        genresApiService: GenresAPIService(),
         provider: provider
     )
     

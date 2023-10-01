@@ -28,6 +28,18 @@ struct SerieSectionFeature: Reducer {
                 return .none
             case .thumbnail:
                 return .none
+            case .onReachListEnd:
+                guard
+                    !state.thumbnails.isEmpty
+                else { return .none }
+                
+                let category = state.collection.category
+                return .run { send in
+                    let results = await container.listUseCase.getNextPage(for: .series(category))
+                    if case let .success(success) = results {
+                        await send(.onLoadCollection(success))
+                    }
+                }
             }
         }
         .forEach(\.thumbnails, action: /Action.thumbnail(id:action:)) {
@@ -63,8 +75,11 @@ extension SerieSectionFeature {
                 SerieModel(
                     id: String($0.id),
                     name: $0.name,
+                    overview: $0.overview,
                     backdropStringURL: $0.backdropURL,
-                    posterStringURL: $0.posterURL
+                    posterStringURL: $0.posterURL,
+                    genders: $0.genres.map { SerieGender(id: $0.id, name: $0.name) },
+                    rate: .init($0.rate)
                 )
             }
                 .filter { model in !self.collection.items.contains(where: { $0.id == model.id })}
@@ -85,5 +100,6 @@ extension SerieSectionFeature {
         case onAppear
         case onLoadCollection(MediaCollection)
         case thumbnail(id: MediaThumnailFeature.State.ID, action: MediaThumnailFeature.Action)
+        case onReachListEnd
     }
 }

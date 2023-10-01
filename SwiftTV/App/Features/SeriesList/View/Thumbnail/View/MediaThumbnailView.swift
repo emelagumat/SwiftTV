@@ -17,12 +17,13 @@ struct MediaThumbnailView: View {
                     )
                 )
                 .resizable()
+                .task { viewStore.send(.onAppear) }
                 .frame(height: 180)
                 .clipShape(
                     RoundedRectangle(cornerRadius: 8)
                 )
+                .onTapGesture { viewStore.send(.onTap) }
             }
-            .task { viewStore.send(.onAppear) }
         }
     }
 }
@@ -49,7 +50,10 @@ extension SerieModel {
     static let mock = SerieModel(
         id: "-",
         name: "Lost",
+        overview: "$0.overview",
         backdropStringURL: "https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg",
-        posterStringURL: "https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg"
+        posterStringURL: "https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg",
+        genders: [],
+        rate: .init(popularity: .zero, voteAverage: .zero, totalVotes: .zero)
     )
 }
