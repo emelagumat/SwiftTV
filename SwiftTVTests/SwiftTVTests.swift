@@ -1,7 +1,6 @@
 //
 
 import XCTest
-
 final class SwiftTVTests: XCTestCase {
 
     override func setUpWithError() throws {

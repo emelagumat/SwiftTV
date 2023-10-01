@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../Domain"),
-        .package(path: "../../MLDCore")
+        .package(path: "../../MLDCore/MLDCore")
     ],
     targets: [
         .target(

@@ -8,7 +8,7 @@ public final class TabBarRepositoryImpl: TabBarRepository {
     public func getTabInfo() async -> Result<Domain.TabBarInfo, Domain.DomainError> {
         .success(
             TabBarInfo(
-                defaultTab: TabItem.dashboard.buildTab(),
+                defaultTab: TabItem.series.buildTab(),
                 items: TabItem.allCases.map { $0.buildTab() }
             )
         )
@@ -16,14 +16,14 @@ public final class TabBarRepositoryImpl: TabBarRepository {
 }
 
 private enum TabItem: CaseIterable {
-    case one
+    case series
     case dashboard
     case two
     
     var title: String {
         switch self {
-        case .one:
-            "One"
+        case .series:
+            "Series"
         case .dashboard:
             "Dashboard"
         case .two:
@@ -33,7 +33,7 @@ private enum TabItem: CaseIterable {
     
     var symbolName: String {
         switch self {
-        case .one:
+        case .series:
             "1.circle"
         case .dashboard:
             "house"

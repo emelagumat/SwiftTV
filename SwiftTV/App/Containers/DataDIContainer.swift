@@ -5,11 +5,15 @@ import Foundation
 
 class DataDIContainer {
     let tabBarRepository: TabBarRepository
-    lazy private(set) var discoverRepository: DiscoverRepository = DiscoverRepositoryImpl(provider: provider)
     let provider: TMDBProvider
     
+    lazy private(set) var listsRepository: ListsRepository = ListsRepositoryImpl(
+        apiService: SeriesListApiService(),
+        provider: provider
+    )
+    
     init(
-        provider: TMDBProvider = .init(authToken: ProcessInfo.processInfo.environment["AUTH_TOKEN"]!)
+        provider: TMDBProvider = .init(authToken: ProcessInfo.processInfo.environment["AUTH_TOKEN"] ?? "")
     ) {
         self.tabBarRepository = TabBarRepositoryImpl()
         self.provider = provider
