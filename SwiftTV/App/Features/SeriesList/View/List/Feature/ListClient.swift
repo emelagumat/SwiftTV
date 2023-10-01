@@ -4,7 +4,7 @@ import ComposableArchitecture
 
 struct ListClient {
     let getNextPage: () async throws -> Result<MediaCollection, DomainError>
-    let getAllGenres: () async -> Result<[MediaGender], DomainError>
+    let getAllGenres: () async -> Result<[MediaGenre], DomainError>
 }
 
 extension ListClient {

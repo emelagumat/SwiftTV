@@ -15,7 +15,7 @@ struct SeriesListFeature: Reducer {
                     return .merge(
                         .run { send in
                             async let genres = (try? await DomainDIContainer.shared.listUseCase.getAllGenres().get()) ?? []
-                            await send(.onGenresLoaded(genres.map { SerieGender(id: $0.id, name: $0.name) }))
+                            await send(.onGenresLoaded(genres.map { SerieGenre(id: $0.id, name: $0.name) }))
                         }
                     )
                 } else {
@@ -90,7 +90,7 @@ extension SeriesListFeature {
 
 struct FilterItem: Identifiable, Equatable {
     var id: Int { genre.id }
-    let genre: SerieGender
+    let genre: SerieGenre
     var isSelected: Bool = false
 }
 
@@ -101,7 +101,7 @@ extension SeriesListFeature {
         case section(id: SerieSectionFeature.State.ID, action: SerieSectionFeature.Action)
         case onSelect(SerieModel)
         case selectedSerie(PresentationAction<SerieDetailFeature.Action>)
-        case onGenresLoaded([SerieGender])
+        case onGenresLoaded([SerieGenre])
         case onGenreTapped(FilterItem)
     }
 }

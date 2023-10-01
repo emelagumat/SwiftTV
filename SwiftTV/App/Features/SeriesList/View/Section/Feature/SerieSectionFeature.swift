@@ -78,7 +78,7 @@ extension SerieSectionFeature {
                     overview: $0.overview,
                     backdropStringURL: $0.backdropURL,
                     posterStringURL: $0.posterURL,
-                    genders: $0.genres.map { SerieGender(id: $0.id, name: $0.name) },
+                    genders: $0.genres.map { SerieGenre(id: $0.id, name: $0.name) },
                     rate: .init($0.rate)
                 )
             }

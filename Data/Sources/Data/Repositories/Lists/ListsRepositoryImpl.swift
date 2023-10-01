@@ -7,7 +7,7 @@ public actor ListsRepositoryImpl: ListsRepository {
     
     private let provider: TMDBProvider
     
-    private var genres: [MediaGender] = []
+    private var genres: [MediaGenre] = []
     
     private var pagesDict: [MediaCollection.Category: Int] = [:]
     
@@ -62,7 +62,7 @@ public actor ListsRepositoryImpl: ListsRepository {
         return nextPage
     }
     
-    public func getAllGenres() async -> Result<[MediaGender], DomainError> {
+    public func getAllGenres() async -> Result<[MediaGenre], DomainError> {
         guard
             genres.isEmpty
         else { return .success(genres) }
@@ -71,7 +71,7 @@ public actor ListsRepositoryImpl: ListsRepository {
         
         do {
             let response: GenresResponse = try await provider.getResponse(from: endpoint)
-            let genres = response.genres.map { MediaGender(id: $0.id, name: $0.name) }
+            let genres = response.genres.map { MediaGenre(id: $0.id, name: $0.name) }
             return .success(genres)
         } catch {
             return .failure(.unknown)

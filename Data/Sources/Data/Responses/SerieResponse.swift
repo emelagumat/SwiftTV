@@ -35,7 +35,7 @@ struct GenreResponse: Codable {
     let name: String
 }
 import Domain
-extension MediaGender {
+extension MediaGenre {
     init(_ response: GenreResponse) {
         self.init(id: response.id, name: response.name)
     }

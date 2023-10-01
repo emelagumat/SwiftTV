@@ -10,7 +10,7 @@ public final class ListsUseCase {
         await listsRepository.getNextPage(for: category)
     }
     
-    public func getAllGenres() async -> Result<[MediaGender], DomainError> {
+    public func getAllGenres() async -> Result<[MediaGenre], DomainError> {
         await listsRepository.getAllGenres()
     }
 }
