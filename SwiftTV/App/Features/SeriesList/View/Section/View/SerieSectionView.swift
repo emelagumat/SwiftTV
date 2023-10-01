@@ -15,7 +15,7 @@ struct SerieSectionView: View {
                     Spacer()
                 }
                 ScrollView(.horizontal) {
-                    HStack(alignment: .top, spacing: 8) {
+                    LazyHStack(alignment: .top, spacing: 8) {
                         ForEachStore(
                             store.scope(
                                 state: \.thumbnails,
@@ -23,8 +23,12 @@ struct SerieSectionView: View {
                             ),
                             content: { store in
                                 MediaThumbnailView(store: store)
+                                    .transition(.opacity)
                             }
                         )
+                        
+                        ProgressView()
+                            .onAppear { viewStore.send(.onReachListEnd) }
                     }
                 }
             }
@@ -37,7 +41,7 @@ struct SerieSectionView: View {
     SerieSectionView(
         store: .init(
             initialState: SerieSectionFeature.State(),
-            reducer: { SerieSectionFeature() }
+            reducer: { SerieSectionFeature().dependency(\.context, .preview) }
         )
     )
 }

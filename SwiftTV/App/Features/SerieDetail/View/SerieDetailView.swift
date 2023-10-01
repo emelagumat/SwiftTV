@@ -19,17 +19,18 @@ struct SerieDetailView: View {
                     Text(viewStore.model.overview)
                     Spacer()
                 }
-                .padding()
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
             }
         }
     }
     
     private func makeHeader(with viewStore: ViewStoreOf<SerieDetailFeature>) -> some View {
-        VStack(alignment: .leading) {
+        VStack {
             RemoteImage(
                 store: .init(
                     initialState: RemoteImageFeature.State(imageStringURL: viewStore.model.backdropStringURL),
-                    reducer: { 
+                    reducer: {
                         RemoteImageFeature()
                     }
                 )
@@ -41,7 +42,14 @@ struct SerieDetailView: View {
                 Spacer()
                 makeRating(with: viewStore.model.rate)
             }
-            .padding()
+            .padding(.horizontal)
+            HStack {
+                Spacer()
+                ForEach(viewStore.model.genders) { gender in
+                    GenderCapsule(text: gender.name)
+                }
+            }
+            .padding([.horizontal, .bottom])
         }
     }
     
@@ -66,32 +74,30 @@ struct SerieDetailView: View {
     }
 }
 
-#Preview {
-    SerieDetailView(
-        store: .init(
-            initialState: SerieDetailFeature.State(model: .mockPreview), reducer: {
-                SerieDetailFeature()
-            }))
-}
-extension Namespace {
-    static var mock: Namespace {
-        .init()
-    }
+struct GenderCapsule: View {
+    let text: String
+//    let isSelected: Bool
     
-    static var mockId: Namespace.ID {
-        Namespace.mock.wrappedValue
+    var body: some View {
+        Text(text)
+            .foregroundStyle(.background)
+            .padding(.vertical, 4)
+            .padding(.horizontal, 8)
+            .lineLimit(1)
+            .background(
+                Capsule(style: .circular)
+                    .foregroundStyle(.primary)
+            )
     }
 }
 
-extension SerieModel {
-    static var mockPreview: SerieModel {
-        .init(
-            id: UUID().uuidString,
-            name: "Tagesschau",
-            overview: "$0.overview",
-            backdropStringURL: "https://image.tmdb.org/t/p/w500/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg",
-            posterStringURL: "https://image.tmdb.org/t/p/w500/60cqjI590JKXCAABqCStVmSBGET.jpg",
-            rate: .init(popularity: 1000, voteAverage: 6.9, totalVotes: 270)
+#Preview {
+    SerieDetailView(
+        store: .init(
+            initialState: SerieDetailFeature.State(),
+            reducer: {
+                SerieDetailFeature()
+            }
         )
-    }
+    )
 }

@@ -22,7 +22,13 @@ struct SerieModel: Identifiable, Equatable {
     let overview: String
     let backdropStringURL: String
     let posterStringURL: String
+    let genders: [SerieGender]
     let rate: RateModel
+}
+
+struct SerieGender: Identifiable, Equatable {
+    let id: Int
+    let name: String
 }
 
 struct RateModel: Equatable {
@@ -61,6 +67,7 @@ extension SerieCollection {
                     overview: $0.overview,
                     backdropStringURL: $0.backdropURL,
                     posterStringURL: $0.posterURL,
+                    genders: $0.genres.map { SerieGender(id: $0.id, name: $0.name)},
                     rate: .init($0.rate)
                 )
             }

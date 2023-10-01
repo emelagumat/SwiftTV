@@ -11,21 +11,24 @@ struct SeriesListFeature: Reducer {
         Reduce<State, Action> { state, action in
             switch action {
             case .onAppear:
-                Task { try? await listClient.getNextPage() }
-                return .none
-            case let .section(stateId, action):
+                if state.genres.isEmpty {
+                    return .merge(
+                        .run { send in
+                            async let genres = (try? await DomainDIContainer.shared.listUseCase.getAllGenres().get()) ?? []
+                            await send(.onGenresLoaded(genres.map { SerieGender(id: $0.id, name: $0.name) }))
+                        }
+                    )
+                } else {
+                    return .none
+                }
+                
+            case let .section(_, action):
                 switch action {
                 case let .thumbnail(id, action):
                     if action == .onTap {
-                        let section = state.collectionStates.first(where: {
-                            $0.id == stateId
-                        })
-                        
-                        let serie = state.collectionStates.flatMap(\.thumbnails).first(where: {
+                        if let serie = state.collectionStates.flatMap(\.thumbnails).first(where: {
                             $0.id == id
-                        })
-                        
-                        if let serie {
+                        }) {
                             return .send(.onSelect(serie.item))
                         }
                     }
@@ -36,7 +39,16 @@ struct SeriesListFeature: Reducer {
             case let .onSelect(serie):
                 state.selectedSerie = .init(model: serie)
                 return .none
-            case let .selectedSerie(selectedSerie):
+            case .selectedSerie:
+                return .none
+            case let .onGenresLoaded(genres):
+                state.genres = genres.map { FilterItem(genre: $0) }
+                return .none
+            case var .onGenreTapped(genre):
+                if let index = state.genres.firstIndex(of: genre) {
+                    genre.isSelected.toggle()
+                    state.genres[index] = genre
+                }
                 return .none
             }
         }
@@ -53,6 +65,8 @@ struct SeriesListFeature: Reducer {
 extension SeriesListFeature {
     struct State: FeatureState {
         var collectionStates: IdentifiedArrayOf<SerieSectionFeature.State> = []
+        var genres: [FilterItem] = []
+        
         @PresentationState var selectedSerie: SerieDetailFeature.State?
         
         init() {
@@ -70,9 +84,14 @@ extension SeriesListFeature {
                     )
                 }
             )
-            
         }
     }
+}
+
+struct FilterItem: Identifiable, Equatable {
+    var id: Int { genre.id }
+    let genre: SerieGender
+    var isSelected: Bool = false
 }
 
 // MARK: - Action
@@ -82,6 +101,8 @@ extension SeriesListFeature {
         case section(id: SerieSectionFeature.State.ID, action: SerieSectionFeature.Action)
         case onSelect(SerieModel)
         case selectedSerie(PresentationAction<SerieDetailFeature.Action>)
+        case onGenresLoaded([SerieGender])
+        case onGenreTapped(FilterItem)
     }
 }
 
