@@ -6,6 +6,8 @@ public struct MediaCollection: Equatable {
     public private(set) var items: [MediaItem]
     public private(set) var hasMoreItems: Bool
     
+    
+    
     public init(
         category: MediaCollection.Category,
         items: [MediaItem],

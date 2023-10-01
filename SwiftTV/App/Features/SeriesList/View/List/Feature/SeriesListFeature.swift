@@ -12,12 +12,10 @@ struct SeriesListFeature: Reducer {
             switch action {
             case .onAppear:
                 if state.genres.isEmpty {
-                    return .merge(
-                        .run { send in
-                            async let genres = (try? await DomainDIContainer.shared.listUseCase.getAllGenres().get()) ?? []
-                            await send(.onGenresLoaded(genres.map { SerieGenre(id: $0.id, name: $0.name) }))
-                        }
-                    )
+                    return .run { send in
+                        async let genres = (try? await DomainDIContainer.shared.listUseCase.getAllGenres().get()) ?? []
+                        await send(.onGenresLoaded(genres.map { SerieGenre(id: $0.id, name: $0.name) }))
+                    }
                 } else {
                     return .none
                 }
@@ -39,11 +37,14 @@ struct SeriesListFeature: Reducer {
             case let .onSelect(serie):
                 state.selectedSerie = .init(model: serie)
                 return .none
+                
             case .selectedSerie:
                 return .none
+                
             case let .onGenresLoaded(genres):
                 state.genres = genres.map { FilterItem(genre: $0) }
                 return .none
+                
             case var .onGenreTapped(genre):
                 if let index = state.genres.firstIndex(of: genre) {
                     genre.isSelected.toggle()
@@ -88,12 +89,6 @@ extension SeriesListFeature {
     }
 }
 
-struct FilterItem: Identifiable, Equatable {
-    var id: Int { genre.id }
-    let genre: SerieGenre
-    var isSelected: Bool = false
-}
-
 // MARK: - Action
 extension SeriesListFeature {
     enum Action: Equatable {
@@ -104,17 +99,4 @@ extension SeriesListFeature {
         case onGenresLoaded([SerieGenre])
         case onGenreTapped(FilterItem)
     }
-}
-
-protocol FeatureState: Equatable {
-    init()
-}
-
-extension Store where State: FeatureState {
-    convenience init<R: Reducer>(_ feature: R) where R.State == State, R.Action == Action {
-        self.init(initialState: .init(), reducer: { feature })
-    }
-}
-extension Reducer where State: FeatureState {
-    
 }

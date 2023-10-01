@@ -63,19 +63,10 @@ struct SerieDetailView: View {
     }
     
     private func makeRating(with rate: RateModel) -> some View {
-        let stars = rate.voteAverage / 10 * 5
-        
-        return VStack {
+        VStack {
             HStack {
-                ForEach(1...5, id: \.self) { index in
-                    switch Double(index) {
-                    case (0...stars):
-                        Image(systemName: "star.fill")
-                    case let double where (0..<(stars + 0.51)).contains(double):
-                        Image(systemName: "star.leadinghalf.filled")
-                    default:
-                        Image(systemName: "star")
-                    }
+                ForEach(rate.images) { representable in
+                    Image(systemName: representable.imageName)
                 }
             }
             .foregroundColor(.appAccent)
@@ -84,12 +75,5 @@ struct SerieDetailView: View {
 }
 
 #Preview {
-    SerieDetailView(
-        store: .init(
-            initialState: SerieDetailFeature.State(model: .init(id: "-", name: "Serie", overview: "OverviewwwOverviewwwOverviewwwOverviewwwOverviewwwOverviewww OverviewwwOverviewwwOverviewwwOverviewwwOverviewwwOverviewwwOverviewww OverviewwwOverviewwwOverviewww OverviewwwOverviewww", backdropStringURL: "", posterStringURL: "", genders: [.init(id: 1, name: "Thriller")], rate: .init(popularity: 0, voteAverage: 0, totalVotes: 0))),
-            reducer: {
-                SerieDetailFeature()
-            }
-        )
-    )
+    SerieDetailView(store: .init(SerieDetailFeature()))
 }

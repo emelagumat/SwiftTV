@@ -2,13 +2,10 @@
 import ComposableArchitecture
 
 struct SerieDetailFeature: Reducer {
-    @Dependency(\.selectedSerie) var selectedSerie
-    
     var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {
             case .onAppear:
-                state.model = selectedSerie
                 return .none
             }
         }
