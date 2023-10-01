@@ -17,11 +17,18 @@ struct SerieDetailView: View {
                     .frame(height: 32)
                 ScrollView {
                     Text(viewStore.model.overview)
+                        .padding()
+                        .frame(maxWidth: .infinity)
                     Spacer()
                 }
+                .background(.appSurface)
+                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 8, height: 8), style: .circular))
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
             }
+            .background(.appBackground)
+            .foregroundStyle(.appText)
+            .font(.medium)
         }
     }
     
@@ -38,18 +45,20 @@ struct SerieDetailView: View {
             .resizable()
             HStack {
                 Text(viewStore.model.name)
-                    .font(.title2)
+                    .font(.large)
                 Spacer()
                 makeRating(with: viewStore.model.rate)
             }
             .padding(.horizontal)
-            HStack {
-                Spacer()
-                ForEach(viewStore.model.genders) { gender in
-                    GenderCapsule(text: gender.name)
+            if !viewStore.model.genders.isEmpty {
+                HStack {
+                    Spacer()
+                    ForEach(viewStore.model.genders) { gender in
+                        GenreCapsule(text: gender.name)
+                    }
                 }
+                .padding([.horizontal])
             }
-            .padding([.horizontal, .bottom])
         }
     }
     
@@ -69,32 +78,15 @@ struct SerieDetailView: View {
                     }
                 }
             }
-            .foregroundColor(.accentColor)
+            .foregroundColor(.appAccent)
         }
-    }
-}
-
-struct GenderCapsule: View {
-    let text: String
-//    let isSelected: Bool
-    
-    var body: some View {
-        Text(text)
-            .foregroundStyle(.background)
-            .padding(.vertical, 4)
-            .padding(.horizontal, 8)
-            .lineLimit(1)
-            .background(
-                Capsule(style: .circular)
-                    .foregroundStyle(.primary)
-            )
     }
 }
 
 #Preview {
     SerieDetailView(
         store: .init(
-            initialState: SerieDetailFeature.State(),
+            initialState: SerieDetailFeature.State(model: .init(id: "-", name: "Serie", overview: "OverviewwwOverviewwwOverviewwwOverviewwwOverviewwwOverviewww OverviewwwOverviewwwOverviewwwOverviewwwOverviewwwOverviewwwOverviewww OverviewwwOverviewwwOverviewww OverviewwwOverviewww", backdropStringURL: "", posterStringURL: "", genders: [.init(id: 1, name: "Thriller")], rate: .init(popularity: 0, voteAverage: 0, totalVotes: 0))),
             reducer: {
                 SerieDetailFeature()
             }

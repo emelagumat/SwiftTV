@@ -10,8 +10,9 @@ struct SerieSectionView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(viewStore.collection.title)
-                        .font(.headline)
+                        .font(.large)
                         .fontWeight(.heavy)
+                        .padding()
                     Spacer()
                 }
                 ScrollView(.horizontal) {
@@ -30,6 +31,7 @@ struct SerieSectionView: View {
                         ProgressView()
                             .onAppear { viewStore.send(.onReachListEnd) }
                     }
+                    .padding(.leading)
                 }
             }
             .task { viewStore.send(.onAppear) }

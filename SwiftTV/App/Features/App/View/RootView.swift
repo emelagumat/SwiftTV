@@ -14,6 +14,8 @@ struct RootView: View {
                 )
             ) {
                 TabBarView(store: $0)
+                    .tint(.appAccent)
+                    .foregroundStyle(Color.appText)
             } else: {
                 LoadingView()
             }

@@ -17,6 +17,7 @@ struct MediaThumbnailView: View {
                     )
                 )
                 .resizable()
+                .foregroundStyle(.appDisabled)
                 .task { viewStore.send(.onAppear) }
                 .frame(height: 180)
                 .clipShape(

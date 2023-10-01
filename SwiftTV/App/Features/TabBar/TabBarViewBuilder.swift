@@ -16,7 +16,14 @@ struct TabBarViewBuilder {
                 }
             }
         default:
-            Text("WIP")
+            WithViewStore(store, observe: { $0 }) { viewStore in
+                ZStack(alignment: .center) {
+                    Text("WIP")
+                        .font(.extraLarge)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+                
         }
     }
 }

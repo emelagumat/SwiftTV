@@ -34,6 +34,7 @@ struct TabBarView: View {
                                     fromStore: store
                                 )
                             )
+                            .background(.appBackground)
                         }
                     }
                 )
@@ -46,12 +47,14 @@ struct TabBarView: View {
         content
             .tabItem {
                 Label(
-                    title: { Text(representable.title) },
+                    title: {
+                        Text(representable.title)
+                            .font(.extraSmall)
+                    },
                     icon: {
                         Image(systemName: representable.symbolName)
                     }
                 )
-                
             }
             .tag(representable)
     }
