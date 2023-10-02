@@ -6,7 +6,7 @@ struct SerieModel: Identifiable, Equatable {
     let overview: String
     let backdropStringURL: String
     let posterStringURL: String
-    let genders: [SerieGenre]
+    let genres: [SerieGenre]
     let rate: RateModel
 }
 
@@ -18,7 +18,7 @@ extension SerieModel {
             overview: media.overview,
             backdropStringURL: media.backdropURL,
             posterStringURL: media.posterURL,
-            genders: media.genres.map(SerieGenre.init),
+            genres: media.genres.map(SerieGenre.init),
             rate: .init(media.rate)
         )
     }

@@ -49,11 +49,11 @@ struct SerieDetailView: View {
                 makeRating(with: viewStore.model.rate)
             }
             .padding(.horizontal)
-            if !viewStore.model.genders.isEmpty {
+            if !viewStore.model.genres.isEmpty {
                 HStack {
                     Spacer()
-                    ForEach(viewStore.model.genders) { gender in
-                        GenreCapsule(text: gender.name)
+                    ForEach(viewStore.model.genres) { genre in
+                        GenreCapsule(text: genre.name)
                     }
                 }
                 .padding([.horizontal])

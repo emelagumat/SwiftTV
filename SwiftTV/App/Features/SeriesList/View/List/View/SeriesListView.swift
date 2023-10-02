@@ -15,6 +15,7 @@ struct SeriesListView: View {
                     isActive: $isFiltersActive,
                     items: viewStore.genres
                 )
+                .foregroundStyle(.appText)
                 ScrollView(.vertical) {
                     VStack(alignment: .leading, spacing: 32) {
                         ForEachStore(

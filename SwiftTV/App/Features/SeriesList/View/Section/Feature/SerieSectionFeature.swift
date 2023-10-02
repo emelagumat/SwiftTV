@@ -16,6 +16,7 @@ struct SerieSectionFeature: Reducer {
                 let category = state.collection.category
                 if state.collection.items.isEmpty {
                     return .run { send in
+                        _ = await container.listUseCase.getAllGenres()
                         let results = await container.listUseCase.getNextPage(for: .series(category))
                         if case let .success(success) = results {
                             await send(.onLoadCollection(success))
@@ -77,7 +78,7 @@ extension SerieSectionFeature {
                     overview: $0.overview,
                     backdropStringURL: $0.backdropURL,
                     posterStringURL: $0.posterURL,
-                    genders: $0.genres.map { SerieGenre(id: $0.id, name: $0.name) },
+                    genres: $0.genres.map { SerieGenre(id: $0.id, name: $0.name) },
                     rate: .init($0.rate)
                 )
             }

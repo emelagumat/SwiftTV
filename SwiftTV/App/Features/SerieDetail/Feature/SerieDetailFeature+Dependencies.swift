@@ -13,7 +13,7 @@ extension SerieModel {
         overview: "",
         backdropStringURL: "",
         posterStringURL: "",
-        genders: [],
+        genres: [],
         rate: .init(images: [], totalVotes: .zero)
     )
 }

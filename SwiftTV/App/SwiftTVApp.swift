@@ -27,19 +27,23 @@ struct SwiftTVApp: App {
     }
 }
 
-private extension SwiftTVApp {
 #if canImport(UIKit)
+private extension SwiftTVApp {
     func setupAppearance() {
         UITabBar.appearance().unselectedItemTintColor = .appDisabled
-
+        
         let fontAtributes = [NSAttributedString.Key.font: UIFont.init(name: "Futura-Medium", size: 12)!]
         UITabBarItem.appearance()
             .setTitleTextAttributes(fontAtributes, for: .normal)
     }
+}
 #endif
 
 #if canImport(AppKit)
+    import AppKit
+    
+private extension SwiftTVApp {
     func setupAppearance() {
     }
-#endif
 }
+#endif

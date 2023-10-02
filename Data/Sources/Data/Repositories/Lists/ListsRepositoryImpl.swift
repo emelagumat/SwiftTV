@@ -59,6 +59,7 @@ public actor ListsRepositoryImpl: ListsRepository {
         do {
             let response: GenresResponse = try await provider.getResponse(from: endpoint)
             let genres = response.genres.map { MediaGenre(id: $0.id, name: $0.name) }
+            self.genres = genres
             return .success(genres)
         } catch {
             return .failure(.unknown)
@@ -79,7 +80,7 @@ public actor ListsRepositoryImpl: ListsRepository {
         hasMoreItems: Bool
     ) -> MediaCollection {
         let results = responses.compactMap {
-            MediaItem(response: $0, category: .serie, genders: genres)
+            MediaItem(response: $0, category: .serie, genres: genres)
         }
 
         return MediaCollection(
