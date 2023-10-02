@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -44,7 +44,6 @@
 		329E59BE2AC1054A00D0FBAF /* TabBarViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59BD2AC1054A00D0FBAF /* TabBarViewBuilder.swift */; };
 		329E59C12AC17C4600D0FBAF /* SeriesListView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59C02AC17C4600D0FBAF /* SeriesListView+Action.swift */; };
 		329E59C42AC17D6C00D0FBAF /* SerieCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59C32AC17D6C00D0FBAF /* SerieCollection.swift */; };
-		329E59C62AC17FB400D0FBAF /* MLDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 329E59C52AC17FB400D0FBAF /* MLDCore */; };
 		329E59C82AC1878A00D0FBAF /* MediaThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59C72AC1878A00D0FBAF /* MediaThumbnailView.swift */; };
 		329E59CA2AC191A400D0FBAF /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59C92AC191A400D0FBAF /* NetworkImage.swift */; };
 		329E59D62AC194AD00D0FBAF /* MediaThumnailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E59D52AC194AD00D0FBAF /* MediaThumnailFeature.swift */; };
@@ -55,6 +54,7 @@
 		32AE3B6D2AC72FD200AABF11 /* ListClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3B6C2AC72FD200AABF11 /* ListClient.swift */; };
 		32AE3B862AC73D6E00AABF11 /* SerieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3B832AC73D6E00AABF11 /* SerieDetailView.swift */; };
 		32AE3B872AC73D6E00AABF11 /* SerieDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3B852AC73D6E00AABF11 /* SerieDetailFeature.swift */; };
+		32CC25BA2ACAC35200F49461 /* MLDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 32CC25B92ACAC35200F49461 /* MLDCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,7 +133,7 @@
 				323133032AC0DAAF0088639E /* SFSymbolEnum in Frameworks */,
 				323133002AC0DAA10088639E /* ComposableArchitecture in Frameworks */,
 				3231330B2AC0DB7E0088639E /* Domain in Frameworks */,
-				329E59C62AC17FB400D0FBAF /* MLDCore in Frameworks */,
+				32CC25BA2ACAC35200F49461 /* MLDCore in Frameworks */,
 				323133092AC0DB7A0088639E /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,7 +519,7 @@
 				323133022AC0DAAF0088639E /* SFSymbolEnum */,
 				323133082AC0DB7A0088639E /* Data */,
 				3231330A2AC0DB7E0088639E /* Domain */,
-				329E59C52AC17FB400D0FBAF /* MLDCore */,
+				32CC25B92ACAC35200F49461 /* MLDCore */,
 			);
 			productName = SwiftTV;
 			productReference = 323132CE2AC0D53A0088639E /* SwiftTV.app */;
@@ -599,8 +599,8 @@
 			packageReferences = (
 				323132FE2AC0DAA10088639E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				323133012AC0DAAF0088639E /* XCRemoteSwiftPackageReference "SFSymbolEnum" */,
-				3231332D2AC0E0FA0088639E /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */,
 				329E59DF2AC2F40400D0FBAF /* XCRemoteSwiftPackageReference "swift-power-assert" */,
+				32CC25B82ACABEF600F49461 /* XCRemoteSwiftPackageReference "MLDCore" */,
 			);
 			productRefGroup = 323132CF2AC0D53A0088639E /* Products */;
 			projectDirPath = "";
@@ -1040,13 +1040,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		3231332D2AC0E0FA0088639E /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../MLDCore/MLDCore;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		323132FE2AC0DAA10088639E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1072,6 +1065,14 @@
 				minimumVersion = 0.12.0;
 			};
 		};
+		32CC25B82ACABEF600F49461 /* XCRemoteSwiftPackageReference "MLDCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/emelagumat/MLDCore.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1093,15 +1094,15 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Domain;
 		};
-		329E59C52AC17FB400D0FBAF /* MLDCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3231332D2AC0E0FA0088639E /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */;
-			productName = MLDCore;
-		};
 		329E59E02AC2F40400D0FBAF /* PowerAssert */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 329E59DF2AC2F40400D0FBAF /* XCRemoteSwiftPackageReference "swift-power-assert" */;
 			productName = PowerAssert;
+		};
+		32CC25B92ACAC35200F49461 /* MLDCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32CC25B82ACABEF600F49461 /* XCRemoteSwiftPackageReference "MLDCore" */;
+			productName = MLDCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../Domain"),
-        .package(path: "../../MLDCore/MLDCore")
+        .package(url: "https://github.com/emelagumat/MLDCore.git", branch: "develop")
     ],
     targets: [
         .target(
