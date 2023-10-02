@@ -1,28 +1,27 @@
 import Domain
 
 public actor ListsRepositoryImpl: ListsRepository {
+    private let provider: TMDBProvider
+
     private let listApiService: SeriesListApiService
     private let genresApiService: GenresAPIService
 
-    private let provider: TMDBProvider
-
     private var genres: [MediaGenre] = []
-
     private var pagesDict: [MediaCollection.Category: Int] = [:]
 
-    public init(listApiService: SeriesListApiService, genresApiService: GenresAPIService, provider: TMDBProvider) {
+    public init(
+        listApiService: SeriesListApiService,
+        genresApiService: GenresAPIService,
+        provider: TMDBProvider
+    ) {
         self.listApiService = listApiService
         self.genresApiService = genresApiService
         self.provider = provider
     }
 
-    public func getNextPage(for category: MediaCollection.Category) async -> Result<MediaCollection, DomainError> {
-        if genres.isEmpty {
-            let result = await getAllGenres()
-            if case let .success(genres) = result {
-                self.genres = genres
-            }
-        }
+    public func getNextPage(
+        for category: MediaCollection.Category
+    ) async -> Result<MediaCollection, DomainError> {
         let nextPage = getAndUpdateNextPageIndex(for: category)
         let endpoint = listApiService.buildEndpoint(
             with: .getPage(page: nextPage, category: category)
@@ -30,20 +29,17 @@ public actor ListsRepositoryImpl: ListsRepository {
 
         do {
             let response: PaginatedResponse<SerieResponse> = try await provider.getResponse(from: endpoint)
+
             guard
                 let pageResults = response.results
             else { return .failure(.unknown) }
 
-            let results = pageResults.compactMap {
-                MediaItem(response: $0, category: .serie, genders: genres)
-            }
-
             let totalPages = response.totalPages ?? .zero
             let hasMoreItems = totalPages > nextPage
 
-            let collection = MediaCollection(
+            let collection = buildCollection(
+                from: pageResults,
                 category: category,
-                items: results,
                 hasMoreItems: hasMoreItems
             )
 
@@ -51,14 +47,6 @@ public actor ListsRepositoryImpl: ListsRepository {
         } catch {
             return .failure(.unknown)
         }
-    }
-
-    private func getAndUpdateNextPageIndex(for category: MediaCollection.Category) -> Int {
-        let nextPage = pagesDict[category, default: 1]
-        let newPage = nextPage + 1
-        pagesDict[category] = newPage
-
-        return nextPage
     }
 
     public func getAllGenres() async -> Result<[MediaGenre], DomainError> {
@@ -75,5 +63,29 @@ public actor ListsRepositoryImpl: ListsRepository {
         } catch {
             return .failure(.unknown)
         }
+    }
+
+    private func getAndUpdateNextPageIndex(for category: MediaCollection.Category) -> Int {
+        let nextPage = pagesDict[category, default: 1]
+        let newPage = nextPage + 1
+        pagesDict[category] = newPage
+
+        return nextPage
+    }
+
+    private func buildCollection(
+        from responses: [SerieResponse?],
+        category: MediaCollection.Category,
+        hasMoreItems: Bool
+    ) -> MediaCollection {
+        let results = responses.compactMap {
+            MediaItem(response: $0, category: .serie, genders: genres)
+        }
+
+        return MediaCollection(
+            category: category,
+            items: results,
+            hasMoreItems: hasMoreItems
+        )
     }
 }

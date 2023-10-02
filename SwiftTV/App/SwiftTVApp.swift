@@ -28,6 +28,7 @@ struct SwiftTVApp: App {
 }
 
 private extension SwiftTVApp {
+#if canImport(UIKit)
     func setupAppearance() {
         UITabBar.appearance().unselectedItemTintColor = .appDisabled
 
@@ -35,4 +36,10 @@ private extension SwiftTVApp {
         UITabBarItem.appearance()
             .setTitleTextAttributes(fontAtributes, for: .normal)
     }
+#endif
+
+#if canImport(AppKit)
+    func setupAppearance() {
+    }
+#endif
 }

@@ -23,7 +23,6 @@ struct SerieSectionView: View {
                             ),
                             content: { store in
                                 MediaThumbnailView(store: store)
-                                    .transition(.opacity)
                             }
                         )
 

@@ -22,22 +22,22 @@ private enum TabItem: CaseIterable {
     var title: String {
         switch self {
         case .series:
-            "Series"
+            "TV"
         case .dashboard:
-            "Dashboard"
+            "Movies"
         case .two:
-            "Two"
+            "App"
         }
     }
 
     var symbolName: String {
         switch self {
         case .series:
-            "1.circle"
+            "play.tv"
         case .dashboard:
-            "house"
+            "film.stack"
         case .two:
-            "2.circle"
+            "cross.fill"
         }
     }
 

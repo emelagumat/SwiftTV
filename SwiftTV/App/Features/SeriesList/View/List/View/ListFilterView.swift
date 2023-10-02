@@ -16,7 +16,7 @@ struct ListFilterView: View {
                         }
                     }
                 }
-                .animation(.spring(.init(duration: 5, bounce: 20), blendDuration: 1.5), value: isActive)
+                .animation(.spring(.bouncy), value: isActive)
                 .transition(
                     AsymmetricTransition(
                         insertion: .push(from: .leading),
