@@ -4,28 +4,31 @@ import Domain
 struct SerieCollection: Identifiable, Equatable {
     let id: String
     let title: String
-    let category: MediaCollection.Category.Serie
+    let category: MediaCollection.Category
     let items: [SerieModel]
 }
 
 extension SerieCollection {
     init(mediaCollection: MediaCollection) {
-        let serieCategory: MediaCollection.Category.Serie
+        let serieCategory: MediaCollection.Category
 
         if case let .series(category) = mediaCollection.category {
-            serieCategory = category
+            serieCategory = .series(category)
+        } else if case let .movies(category) = mediaCollection.category {
+            serieCategory = .movies(category)
         } else {
-            serieCategory = .popular
+            serieCategory = .series(.popular)
         }
         self.init(
             id: UUID().uuidString,
             title: mediaCollection.category.displayName,
             category: serieCategory,
             items: mediaCollection.items.map {
-                SerieModel(
+                let tvMedia = $0 as? TVMediaItem
+                return SerieModel(
                     id: String($0.id),
-                    name: $0.name,
-                    overview: $0.overview,
+                    name: tvMedia?.name ?? "",
+                    overview: tvMedia?.overview ?? "",
                     backdropStringURL: $0.backdropURL,
                     posterStringURL: $0.posterURL,
                     genres: $0.genres.map { SerieGenre(id: $0.id, name: $0.name)},
@@ -61,6 +64,7 @@ private extension MediaCollection.Category.Serie {
         }
     }
 }
+
 private extension MediaCollection.Category.Movie {
     var displayName: String {
         switch self {

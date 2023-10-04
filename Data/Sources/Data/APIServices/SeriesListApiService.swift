@@ -66,7 +66,7 @@ private extension MediaCollection.Category {
             case .topRated:
                 "/top_rated"
             case .nowPlaying:
-                "now_playing"
+                "/now_playing"
             }
         }
     

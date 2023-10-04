@@ -28,7 +28,7 @@ public actor ListsRepositoryImpl: ListsRepository {
         )
 
         do {
-            let response: PaginatedResponse<SerieResponse> = try await provider.getResponse(from: endpoint)
+            let response: PaginatedResponse<MediaResponse> = try await provider.getResponse(from: endpoint)
 
             guard
                 let pageResults = response.results
@@ -75,13 +75,33 @@ public actor ListsRepositoryImpl: ListsRepository {
     }
 
     private func buildCollection(
-        from responses: [SerieResponse?],
+        from responses: [MediaResponse?],
         category: MediaCollection.Category,
         hasMoreItems: Bool
     ) -> MediaCollection {
-        let results = responses.compactMap {
-            MediaItem(response: $0, category: .serie, genres: genres)
+        let results: [MediaItem]
+        
+        switch category {
+        case .series:
+            results = responses.compactMap {
+                TVMediaItem(
+                    response: $0,
+                    category: .tv,
+                    genres: genres
+                )
+            }
+        case .movies:
+            results = responses.compactMap {
+                MovieMediaItem(
+                    response: $0,
+                    category: .movie,
+                    genres: genres
+                    )
+            }
         }
+//        let results = responses.compactMap {
+//            MediaItem(response: $0, category: .serie, genres: genres)
+//        }
 
         return MediaCollection(
             category: category,
