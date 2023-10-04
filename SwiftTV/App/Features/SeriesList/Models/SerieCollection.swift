@@ -41,6 +41,8 @@ extension MediaCollection.Category {
         switch self {
         case let .series(series):
             series.displayName
+        case let .movies(movies):
+            movies.displayName
         }
     }
 }
@@ -52,6 +54,20 @@ private extension MediaCollection.Category.Serie {
             "Airing today"
         case .onTheAir:
             "On the Air"
+        case .popular:
+            "Popular"
+        case .topRated:
+            "Top rated"
+        }
+    }
+}
+private extension MediaCollection.Category.Movie {
+    var displayName: String {
+        switch self {
+        case .nowPlaying:
+            "Now Playing"
+        case .upcoming:
+            "Upcoming"
         case .popular:
             "Popular"
         case .topRated:

@@ -14,6 +14,12 @@ struct TabBarViewBuilder {
                     SeriesListView(store: store)
                 }
             }
+        case "Movies":
+            WithViewStore(store, observe: \.tabs) { _ in
+                IfLetStore(store.scope(state: \.moviesList, action: TabBarFeature.Action.movies)) { store in
+                    SeriesListView(store: store)
+                }
+            }
         case "App":
             ZStack(alignment: .center) {
                 VStack(spacing: 32) {

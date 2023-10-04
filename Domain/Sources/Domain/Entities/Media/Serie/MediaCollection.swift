@@ -19,6 +19,7 @@ public struct MediaCollection: Equatable {
 public extension MediaCollection {
     enum Category: Equatable, Hashable {
         case series(Serie)
+        case movies(Movie)
     }
 }
 
@@ -28,5 +29,12 @@ public extension MediaCollection.Category {
         case airingToday
         case topRated
         case onTheAir
+    }
+    
+    enum Movie: Equatable, Hashable, CaseIterable {
+        case popular
+        case upcoming
+        case topRated
+        case nowPlaying
     }
 }

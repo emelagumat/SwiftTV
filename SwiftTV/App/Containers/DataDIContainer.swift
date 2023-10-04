@@ -11,6 +11,12 @@ class DataDIContainer {
         genresApiService: GenresAPIService(),
         provider: provider
     )
+    
+    lazy private(set) var movieListsRepository: ListsRepository = ListsRepositoryImpl(
+        listApiService: MoviesListApiService(),
+        genresApiService: GenresAPIService(),
+        provider: provider
+    )
 
     init(
         provider: TMDBProvider = .init(authToken: ProcessInfo.processInfo.environment["AUTH_TOKEN"] ?? "")

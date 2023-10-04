@@ -3,14 +3,14 @@ import Domain
 public actor ListsRepositoryImpl: ListsRepository {
     private let provider: TMDBProvider
 
-    private let listApiService: SeriesListApiService
+    private let listApiService: ListApiService
     private let genresApiService: GenresAPIService
 
     private var genres: [MediaGenre] = []
     private var pagesDict: [MediaCollection.Category: Int] = [:]
 
     public init(
-        listApiService: SeriesListApiService,
+        listApiService: ListApiService,
         genresApiService: GenresAPIService,
         provider: TMDBProvider
     ) {
