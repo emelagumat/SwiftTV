@@ -12,7 +12,7 @@ struct RateIconRepresentable: Identifiable, Equatable {
 }
 
 extension RateModel {
-    init(_ rate: MediaItem.Rate) {
+    init(_ rate: MediaItemRate) {
         let icons = Self.makeRatingImages(with: rate).enumerated()
             .map { index, imageName in
                 RateIconRepresentable(
@@ -27,7 +27,7 @@ extension RateModel {
         )
     }
 
-    private static func makeRatingImages(with rate: MediaItem.Rate) -> [String] {
+    private static func makeRatingImages(with rate: MediaItemRate) -> [String] {
         let rateBase: Double = 10
         let totalStars: Double = 5
         let stars = rate.voteAverage / rateBase * totalStars

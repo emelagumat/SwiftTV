@@ -1,6 +1,7 @@
 import Domain
 
 struct SerieModel: Identifiable, Equatable {
+
     let id: String
     let name: String
     let overview: String
@@ -12,10 +13,12 @@ struct SerieModel: Identifiable, Equatable {
 
 extension SerieModel {
     init(_ media: MediaItem) {
+        let tvMedia = media as? TVMediaItem
+        let movieMedia = media as? MovieMediaItem
         self.init(
             id: String(media.id),
-            name: media.name,
-            overview: media.overview,
+            name: tvMedia?.name ?? movieMedia?.title ?? "",
+            overview: tvMedia?.overview ?? movieMedia?.overview ?? "",
             backdropStringURL: media.backdropURL,
             posterStringURL: media.posterURL,
             genres: media.genres.map(SerieGenre.init),

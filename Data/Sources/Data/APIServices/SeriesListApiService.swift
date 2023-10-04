@@ -1,12 +1,24 @@
 import APIClient
 import Domain
 
-public final class SeriesListApiService: TMDBApiService {
+public final class SeriesListApiService: ListApiService {
+    public init() {
+        super.init(path: "/tv")
+    }
+}
+public final class MoviesListApiService: ListApiService {
+    public init() {
+        super.init(path: "/movie")
+    }
+}
+public class ListApiService: TMDBApiService {
     public typealias Action = SeriesListApiServiceAction
 
-    public var path: String { "/tv" }
+    public var path: String
 
-    public init() {}
+    public init(path: String) {
+        self.path = path
+    }
 }
 
 public enum SeriesListApiServiceAction: APIServiceAction {
@@ -45,6 +57,18 @@ private extension MediaCollection.Category {
             case .topRated:
                 "/top_rated"
             }
+        case let .movies(moviesCategory):
+            switch moviesCategory {
+            case .popular:
+                "/popular"
+            case .upcoming:
+                "/upcoming"
+            case .topRated:
+                "/top_rated"
+            case .nowPlaying:
+                "/now_playing"
+            }
         }
+
     }
 }

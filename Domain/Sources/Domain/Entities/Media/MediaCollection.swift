@@ -14,11 +14,17 @@ public struct MediaCollection: Equatable {
         self.items = items
         self.hasMoreItems = hasMoreItems
     }
+
+    public static func == (lhs: MediaCollection, rhs: MediaCollection) -> Bool {
+        lhs.category == rhs.category &&
+        lhs.items.map(\.id) == rhs.items.map(\.id)
+    }
 }
 
 public extension MediaCollection {
     enum Category: Equatable, Hashable {
         case series(Serie)
+        case movies(Movie)
     }
 }
 
@@ -28,5 +34,12 @@ public extension MediaCollection.Category {
         case airingToday
         case topRated
         case onTheAir
+    }
+
+    enum Movie: Equatable, Hashable, CaseIterable {
+        case popular
+        case upcoming
+        case topRated
+        case nowPlaying
     }
 }

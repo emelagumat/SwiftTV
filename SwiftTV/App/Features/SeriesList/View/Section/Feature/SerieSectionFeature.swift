@@ -3,11 +3,8 @@ import Foundation
 import Domain
 
 struct SerieSectionFeature: Reducer {
-    let container: DomainDIContainer
-
-    init(container: DomainDIContainer = .shared) {
-        self.container = container
-    }
+    @Dependency(\.listClient)
+    var listClient
 
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -15,9 +12,10 @@ struct SerieSectionFeature: Reducer {
             case .onAppear:
                 let category = state.collection.category
                 if state.collection.items.isEmpty {
+                    let category = state.collection.category
                     return .run { send in
-                        _ = await container.listUseCase.getAllGenres()
-                        let results = await container.listUseCase.getNextPage(for: .series(category))
+                        _ = await listClient.getAllGenres()
+                        let results = try await listClient.getNextPage(category)
                         if case let .success(success) = results {
                             await send(.onLoadCollection(success))
                         }
@@ -32,10 +30,9 @@ struct SerieSectionFeature: Reducer {
                 guard
                     !state.thumbnails.isEmpty
                 else { return .none }
-
                 let category = state.collection.category
                 return .run { send in
-                    let results = await container.listUseCase.getNextPage(for: .series(category))
+                    let results = try await listClient.getNextPage(category)
                     if case let .success(success) = results {
                         await send(.onLoadCollection(success))
                     }
@@ -59,7 +56,7 @@ extension SerieSectionFeature {
             self.collection = .init(
                 id: UUID().uuidString,
                 title: "",
-                category: .popular,
+                category: .series(.popular),
                 items: []
             )
         }
@@ -72,10 +69,13 @@ extension SerieSectionFeature {
 
         mutating func update(with collection: MediaCollection) {
             let newItems =  collection.items.map {
-                SerieModel(
+                let tvMedia = $0 as? TVMediaItem
+                let movieMedia = $0 as? MovieMediaItem
+
+                return SerieModel(
                     id: String($0.id),
-                    name: $0.name,
-                    overview: $0.overview,
+                    name: tvMedia?.name ?? movieMedia?.title ?? "",
+                    overview: tvMedia?.overview ?? movieMedia?.overview ?? "",
                     backdropStringURL: $0.backdropURL,
                     posterStringURL: $0.posterURL,
                     genres: $0.genres.map { SerieGenre(id: $0.id, name: $0.name) },
