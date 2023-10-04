@@ -11,7 +11,7 @@ class DataDIContainer {
         genresApiService: GenresAPIService(),
         provider: provider
     )
-    
+
     lazy private(set) var movieListsRepository: ListsRepository = ListsRepositoryImpl(
         listApiService: MoviesListApiService(),
         genresApiService: GenresAPIService(),

@@ -53,7 +53,7 @@ struct SeriesListFeature: Reducer {
             }
         }
         .forEach(\.collectionStates, action: /Action.section(id:action:)) {
-            
+
             SerieSectionFeature()
                 .dependency(\.listClient, listClient)
         }
@@ -84,7 +84,7 @@ extension SeriesListFeature {
                 }
             )
         }
-        
+
         init(type: ListType) {
             self.type = type
             let collections = type.builder
@@ -102,7 +102,7 @@ extension SeriesListFeature {
 enum ListType {
     case series
     case movies
-    
+
     var builder: [MediaCollection] {
         switch self {
         case .series:

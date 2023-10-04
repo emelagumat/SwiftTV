@@ -28,7 +28,7 @@ extension MovieMediaItem {
         guard let response else { return nil }
         self.init(
             id: response.id ?? .zero,
-            releaseDate:  DateFormatter.tmdbApi.date(from: response.firstAirDate ?? ""),
+            releaseDate: DateFormatter.tmdbApi.date(from: response.firstAirDate ?? ""),
             title: response.title ?? "",
             originalTitle: response.originalTitle ?? "",
             originCountryCode: response.originCountry ?? [],

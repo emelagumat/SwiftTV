@@ -1,4 +1,3 @@
-
 import Domain
 
 struct MediaResponse: Codable {
@@ -15,7 +14,7 @@ struct MediaResponse: Codable {
     let voteCount: Int?
     let firstAirDate, name: String?
     let originCountry: [String]?
-    
+
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"

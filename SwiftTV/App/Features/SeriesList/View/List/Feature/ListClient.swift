@@ -26,7 +26,7 @@ enum ListClientKey: DependencyKey {
             await DomainDIContainer.shared.listUseCase.getAllGenres()
         }
     )
-    
+
     static let movies = ListClient(
         getNextPage: {
             await DomainDIContainer.shared.movieListUseCase.getNextPage(for: $0)

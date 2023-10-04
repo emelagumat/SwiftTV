@@ -80,7 +80,7 @@ public actor ListsRepositoryImpl: ListsRepository {
         hasMoreItems: Bool
     ) -> MediaCollection {
         let results: [MediaItem]
-        
+
         switch category {
         case .series:
             results = responses.compactMap {

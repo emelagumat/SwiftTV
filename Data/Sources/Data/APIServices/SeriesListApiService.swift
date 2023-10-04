@@ -69,6 +69,6 @@ private extension MediaCollection.Category {
                 "/now_playing"
             }
         }
-    
+
     }
 }

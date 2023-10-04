@@ -1,16 +1,7 @@
 import Domain
 
 struct SerieModel: Identifiable, Equatable {
-    internal init(id: String, name: String, overview: String, backdropStringURL: String, posterStringURL: String, genres: [SerieGenre], rate: RateModel) {
-        self.id = id
-        self.name = name
-        self.overview = overview
-        self.backdropStringURL = backdropStringURL
-        self.posterStringURL = posterStringURL
-        self.genres = genres
-        self.rate = rate
-    }
-    
+
     let id: String
     let name: String
     let overview: String

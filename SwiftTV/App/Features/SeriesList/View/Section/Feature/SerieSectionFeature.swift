@@ -5,7 +5,7 @@ import Domain
 struct SerieSectionFeature: Reducer {
     @Dependency(\.listClient)
     var listClient
-    
+
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
@@ -71,7 +71,7 @@ extension SerieSectionFeature {
             let newItems =  collection.items.map {
                 let tvMedia = $0 as? TVMediaItem
                 let movieMedia = $0 as? MovieMediaItem
-                
+
                 return SerieModel(
                     id: String($0.id),
                     name: tvMedia?.name ?? movieMedia?.title ?? "",
