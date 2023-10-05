@@ -10,8 +10,7 @@ struct SerieSectionFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                let category = state.collection.category
-                if state.collection.items.isEmpty {
+                if state.thumbnails.isEmpty {
                     let category = state.collection.category
                     return .run { send in
                         _ = await listClient.getAllGenres()
@@ -20,16 +19,18 @@ struct SerieSectionFeature: Reducer {
                             await send(.onLoadCollection(success))
                         }
                     }
-                } else { return .none }
+                } else {
+                    return .none
+                }
             case let .onLoadCollection(collection):
                 state.update(with: collection)
+                if state.thumbnails.isEmpty {
+                    return .send(.onReachListEnd)
+                }
                 return .none
             case .thumbnail:
                 return .none
             case .onReachListEnd:
-                guard
-                    !state.thumbnails.isEmpty
-                else { return .none }
                 let category = state.collection.category
                 return .run { send in
                     let results = try await listClient.getNextPage(category)
@@ -37,6 +38,12 @@ struct SerieSectionFeature: Reducer {
                         await send(.onLoadCollection(success))
                     }
                 }
+            case let .onSetFilters(genres):
+                state.filters = genres
+                if state.thumbnails.isEmpty {
+                    return .send(.onReachListEnd)
+                }
+                return .none
             }
         }
         .forEach(\.thumbnails, action: /Action.thumbnail(id:action:)) {
@@ -48,7 +55,18 @@ struct SerieSectionFeature: Reducer {
 extension SerieSectionFeature {
     struct State: Equatable, Identifiable {
         let id: UUID
-        var collection: SerieCollection
+        var collection: SerieCollection {
+            didSet {
+                updateWithFilters()
+            }
+        }
+        var filters: [MediaGenre] = [] {
+            didSet {
+                updateWithFilters()
+            }
+        }
+
+        private var _thumbnails: [MediaThumnailFeature.State] = []
         var thumbnails: IdentifiedArrayOf<MediaThumnailFeature.State> = []
 
         init() {
@@ -90,7 +108,20 @@ extension SerieSectionFeature {
                 category: self.collection.category,
                 items: self.collection.items + newItems
             )
-            self.thumbnails = .init(uniqueElements: self.collection.items.map { MediaThumnailFeature.State(item: $0) })
+        }
+
+        private mutating func updateWithFilters() {
+            var thumbailsItems = collection.items
+            if !filters.isEmpty {
+                thumbailsItems = thumbailsItems.filter {
+                    let thumbnailGenres = $0.genres.map { MediaGenre(id: $0.id, name: $0.name) }
+                    let containsAny = !thumbnailGenres.filter { filters.contains($0) }.isEmpty
+                    return containsAny
+                }
+            }
+            self.thumbnails = .init(uniqueElements: thumbailsItems.map {
+                MediaThumnailFeature.State(item: $0)
+            })
         }
     }
 }
@@ -101,5 +132,6 @@ extension SerieSectionFeature {
         case onLoadCollection(MediaCollection)
         case thumbnail(id: MediaThumnailFeature.State.ID, action: MediaThumnailFeature.Action)
         case onReachListEnd
+        case onSetFilters([MediaGenre])
     }
 }
