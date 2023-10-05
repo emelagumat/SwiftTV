@@ -1,47 +1,62 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ListFilterView: View {
-    @Binding var isActive: Bool
-    let items: [FilterItem]
-
+    let store: StoreOf<ListFilterFeature>
+    
     var body: some View {
-        HStack {
-            if isActive {
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(items) { item in
-                            GenreCapsule(text: item.genre.name)
+        WithViewStore(store, observe: { $0} ) { viewStore in
+            HStack {
+                if viewStore.isActive {
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(viewStore.items) { item in
+                                GenreCapsule(text: item.genre.name)
+                            }
                         }
                     }
-                }
-                .animation(.spring(.bouncy), value: isActive)
-                .transition(
-                    AsymmetricTransition(
-                        insertion: .push(from: .leading),
-                        removal: .push(from: .trailing)
+                    .animation(.spring(.bouncy), value: viewStore.isActive)
+                    .transition(
+                        AsymmetricTransition(
+                            insertion: .push(from: .leading),
+                            removal: .push(from: .trailing)
+                        )
                     )
-                )
-            } else {
-                Spacer()
-            }
-            Image(systemName: isActive ? "x.circle" : "slider.horizontal.3")
-                .contentTransition(.symbolEffect(.replace))
-                .font(.large)
-                .animation(.easeInOut, value: isActive)
-                .transition(.symbolEffect)
-                .onTapGesture {
-                    withAnimation {
-                        isActive.toggle()
-                    }
+                } else {
+                    Spacer()
+                        .frame(height: .zero)
                 }
-                .background(.appBackground)
+            }
+            .padding()
+            .toolbar {
+                Button(
+                    action: {
+                        viewStore.send(.onActivateButtonTapped)
+//                        withAnimation {
+//                            isActive.toggle()
+//                        }
+                    },
+                    label: {
+                        Image(systemName: viewStore.isActive ? "x.circle" : "slider.horizontal.3")
+                            .contentTransition(.symbolEffect(.replace))
+                            .font(.large)
+                            .animation(.easeInOut, value: viewStore.isActive)
+                            .transition(.symbolEffect)
+                    }
+                )
+            }
         }
-        .padding()
     }
 }
 
-#Preview {
-    ListFilterView(isActive: .constant(true), items: [])
-}
+//#Preview {
+//    ListFilterView(
+//        isActive: .constant(true),
+//        items: [
+//            .init(genre: .init(id: 0, name: "Thriller"), isSelected: false),
+//            .init(genre: .init(id: 1, name: "Terror"), isSelected: false)
+//        ]
+//    )
+//}

@@ -25,6 +25,7 @@ struct SerieDetailView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
             }
+            .navigationTitle(viewStore.model.name)
             .background(.appBackground)
             .foregroundStyle(.appText)
             .font(.medium)

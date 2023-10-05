@@ -9,15 +9,22 @@ struct TabBarViewBuilder {
     ) -> some View {
         switch tab.title {
         case "TV":
-            WithViewStore(store, observe: \.tabs) { _ in
-                IfLetStore(store.scope(state: \.seriesList, action: TabBarFeature.Action.series)) { store in
-                    SeriesListView(store: store)
+            NavigationStack {
+                WithViewStore(store, observe: \.tabs) { _ in
+                    IfLetStore(store.scope(state: \.seriesList, action: TabBarFeature.Action.series)) { store in
+                        
+                            
+                        SeriesListView(store: store)
+                    }
+                            
                 }
             }
         case "Movies":
-            WithViewStore(store, observe: \.tabs) { _ in
-                IfLetStore(store.scope(state: \.moviesList, action: TabBarFeature.Action.movies)) { store in
-                    SeriesListView(store: store)
+            NavigationStack {
+                WithViewStore(store, observe: \.tabs) { _ in
+                    IfLetStore(store.scope(state: \.moviesList, action: TabBarFeature.Action.movies)) { store in
+                        SeriesListView(store: store)
+                    }
                 }
             }
         case "App":

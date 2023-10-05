@@ -17,7 +17,6 @@ struct TabBarView: View {
             store,
             observe: { $0 }
         ) { viewStore in
-            VStack {
                 TabView(
                     selection: viewStore.binding(
                         get: { $0.selectedTab },
@@ -38,8 +37,6 @@ struct TabBarView: View {
                         }
                     }
                 )
-            }
-
         }
     }
 

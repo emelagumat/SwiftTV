@@ -25,10 +25,12 @@ struct TabBarFeature: Reducer {
         }
         .ifLet(\.seriesList, action: /Action.series) {
             SeriesListFeature()
+                ._printChanges()
         }
         .ifLet(\.moviesList, action: /Action.movies) {
             SeriesListFeature()
                 .dependency(\.listClient, ListClientKey.movies)
+                ._printChanges()
         }
     }
 }
