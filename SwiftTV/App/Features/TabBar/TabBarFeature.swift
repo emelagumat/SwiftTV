@@ -24,11 +24,11 @@ struct TabBarFeature: Reducer {
             }
         }
         .ifLet(\.seriesList, action: /Action.series) {
-            SeriesListFeature()
+            MediaListFeature()
                 ._printChanges()
         }
         .ifLet(\.moviesList, action: /Action.movies) {
-            SeriesListFeature()
+            MediaListFeature()
                 .dependency(\.listClient, ListClientKey.movies)
                 ._printChanges()
         }
@@ -50,14 +50,14 @@ extension TabBarFeature {
         var selectedTab: AppTabRepresentable
         var tabs: [AppTabRepresentable]
 
-        var seriesList: SeriesListFeature.State? = .init()
-        var moviesList: SeriesListFeature.State? = .init(type: .movies)
+        var seriesList: MediaListFeature.State? = .init()
+        var moviesList: MediaListFeature.State? = .init(type: .movies)
     }
 
     enum Action: Equatable {
         case onAppear
         case onSelect(AppTabRepresentable)
-        case series(SeriesListFeature.Action)
-        case movies(SeriesListFeature.Action)
+        case series(MediaListFeature.Action)
+        case movies(MediaListFeature.Action)
     }
 }
