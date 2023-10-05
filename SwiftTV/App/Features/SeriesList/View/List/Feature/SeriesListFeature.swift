@@ -41,18 +41,23 @@ struct SeriesListFeature: Reducer {
                 return .none
 
             case let .onGenresLoaded(genres):
-//                state.genres = genres.map { FilterItem(genre: $0) }
                 state.filters.items = genres.map { FilterItem(genre: $0) }
                 return .none
 
+            case let .filters(.onSetFilters(filters)):
+                let allSectionsIds = state.collectionStates.ids
+                let genreFilters: [MediaGenre] = filters.map { item in
+                        .init(id: item.genre.id, name: item.genre.name)
+                }
+                let allSectionsActions = allSectionsIds.map {
+                    SeriesListFeature.Action.section(
+                        id: $0,
+                        action: .onSetFilters(genreFilters)
+                    )
+                }
+                return .merge(allSectionsActions.map { .send($0) })
             case .filters:
                 return .none
-//            case var .onGenreTapped(genre):
-//                if let index = state.genres.firstIndex(of: genre) {
-//                    genre.isSelected.toggle()
-//                    state.genres[index] = genre
-//                }
-//                return .none
             }
         }
         .forEach(\.collectionStates, action: /Action.section(id:action:)) {

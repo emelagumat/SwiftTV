@@ -5,15 +5,18 @@ import ComposableArchitecture
 
 struct ListFilterView: View {
     let store: StoreOf<ListFilterFeature>
-    
+
     var body: some View {
-        WithViewStore(store, observe: { $0} ) { viewStore in
+        WithViewStore(store, observe: { $0}) { viewStore in
             HStack {
                 if viewStore.isActive {
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(viewStore.items) { item in
                                 GenreCapsule(text: item.genre.name)
+                                    .foregroundStyle(item.isSelected ? .appAccent : .appDisabled)                                    .onTapGesture {
+                                        viewStore.send(.onSelect(item))
+                                    }
                             }
                         }
                     }
@@ -33,10 +36,7 @@ struct ListFilterView: View {
             .toolbar {
                 Button(
                     action: {
-                        viewStore.send(.onActivateButtonTapped)
-//                        withAnimation {
-//                            isActive.toggle()
-//                        }
+                        viewStore.send(.onActivateButtonTapped, animation: .bouncy)
                     },
                     label: {
                         Image(systemName: viewStore.isActive ? "x.circle" : "slider.horizontal.3")
@@ -51,7 +51,7 @@ struct ListFilterView: View {
     }
 }
 
-//#Preview {
+// #Preview {
 //    ListFilterView(
 //        isActive: .constant(true),
 //        items: [
@@ -59,4 +59,4 @@ struct ListFilterView: View {
 //            .init(genre: .init(id: 1, name: "Terror"), isSelected: false)
 //        ]
 //    )
-//}
+// }

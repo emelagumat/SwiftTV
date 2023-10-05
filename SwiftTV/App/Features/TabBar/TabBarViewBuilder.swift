@@ -12,11 +12,12 @@ struct TabBarViewBuilder {
             NavigationStack {
                 WithViewStore(store, observe: \.tabs) { _ in
                     IfLetStore(store.scope(state: \.seriesList, action: TabBarFeature.Action.series)) { store in
-                        
-                            
+
                         SeriesListView(store: store)
+                            .navigationTitle("TV")
+                            .navigationBarTitleDisplayMode(.inline)
                     }
-                            
+
                 }
             }
         case "Movies":
@@ -24,6 +25,8 @@ struct TabBarViewBuilder {
                 WithViewStore(store, observe: \.tabs) { _ in
                     IfLetStore(store.scope(state: \.moviesList, action: TabBarFeature.Action.movies)) { store in
                         SeriesListView(store: store)
+                            .navigationTitle("Movies")
+                            .navigationBarTitleDisplayMode(.inline)
                     }
                 }
             }

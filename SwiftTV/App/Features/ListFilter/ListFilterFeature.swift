@@ -1,4 +1,3 @@
-
 import ComposableArchitecture
 
 struct ListFilterFeature: Reducer {
@@ -8,9 +7,17 @@ struct ListFilterFeature: Reducer {
             case .onActivateButtonTapped:
                 state.isActive.toggle()
                 return .none
-            case let .onSelect(item):
+            case var .onSelect(item):
+                item.isSelected.toggle()
+                if let itemIndex = state.items.firstIndex(where: { $0.id == item.id }) {
+                    state.items[itemIndex] = item
+                }
+                let filters = state.items.filter(\.isSelected)
+                return .send(.onSetFilters(filters))
+            case .onSetFilters:
                 return .none
             }
+
         }
     }
 }
@@ -28,5 +35,6 @@ extension ListFilterFeature {
     enum Action: Equatable {
         case onActivateButtonTapped
         case onSelect(FilterItem)
+        case onSetFilters([FilterItem])
     }
 }
