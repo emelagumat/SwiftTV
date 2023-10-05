@@ -11,6 +11,7 @@ class DomainDIContainer {
     )
 
     lazy private(set) var listUseCase: ListsUseCase = .init(listsRepository: dataContainer.listsRepository)
+    lazy private(set) var movieListUseCase: ListsUseCase = .init(listsRepository: dataContainer.movieListsRepository)
     private init(
         dataContainer: DataDIContainer = .init()
     ) {
