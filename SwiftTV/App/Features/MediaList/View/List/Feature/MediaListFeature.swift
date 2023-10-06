@@ -45,16 +45,29 @@ struct MediaListFeature: Reducer {
                 return .none
 
             case let .filters(.onSetFilters(filters)):
-                let allSectionsIds = state.collectionStates.ids
                 let genreFilters: [MediaGenre] = filters.map { item in
                         .init(id: item.genre.id, name: item.genre.name)
                 }
-                let allSectionsActions = allSectionsIds.map {
-                    MediaListFeature.Action.section(
-                        id: $0,
-                        action: .onSetFilters(genreFilters)
+                let sections = genreFilters.map { genre in
+                    MediaSectionFeature.State(
+                        collection: .init(
+                            id: String(genre.id),
+                            title: String(genre.id),
+                            category: .series(.custom(genre.name)),
+                            items: [],
+                            hasMoreItems: true
+                        ),
+                        filters: [genre]
                     )
                 }
+                state.collectionStates = .init(uniqueElements: sections)
+                let allSectionsActions = genreFilters.map { genre in
+                    MediaListFeature.Action.section(
+                        id: genre.name,
+                        action: .onSetFilters([genre])
+                    )
+                }
+                
                 return .merge(allSectionsActions.map { .send($0) })
             case .filters:
                 return .none
@@ -91,7 +104,8 @@ extension MediaListFeature {
             collectionStates = .init(
                 uniqueElements: collections.map {
                     MediaSectionFeature.State(
-                        collection: .init(mediaCollection: $0)
+                        collection: .init(mediaCollection: $0),
+                        filters: []
                     )
                 }
             )
@@ -103,7 +117,8 @@ extension MediaListFeature {
             collectionStates = .init(
                 uniqueElements: collections.map {
                     MediaSectionFeature.State(
-                        collection: .init(mediaCollection: $0)
+                        collection: .init(mediaCollection: $0),
+                        filters: []
                     )
                 }
             )

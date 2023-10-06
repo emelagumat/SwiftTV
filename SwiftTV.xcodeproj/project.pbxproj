@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320E6B2D2ACF62DD009CD90A /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320E6B2C2ACF62DD009CD90A /* AppModel.swift */; };
 		323132D22AC0D53A0088639E /* SwiftTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132D12AC0D53A0088639E /* SwiftTVApp.swift */; };
 		323132D62AC0D53A0088639E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132D52AC0D53A0088639E /* Item.swift */; };
 		323132D82AC0D53B0088639E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323132D72AC0D53B0088639E /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		320E6B2C2ACF62DD009CD90A /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		323132CE2AC0D53A0088639E /* SwiftTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		323132D12AC0D53A0088639E /* SwiftTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTVApp.swift; sourceTree = "<group>"; };
 		323132D52AC0D53A0088639E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -156,6 +158,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		320E6B2B2ACF62D3009CD90A /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				320E6B2C2ACF62DD009CD90A /* AppModel.swift */,
+			);
+			path = Wrappers;
+			sourceTree = "<group>";
+		};
 		323132C52AC0D53A0088639E = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +325,7 @@
 		327771D72AC9F3DE000E0403 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				320E6B2B2ACF62D3009CD90A /* Wrappers */,
 				327771E92ACA24E2000E0403 /* Protocols */,
 				327771D82AC9F409000E0403 /* Extensions */,
 			);
@@ -677,6 +688,7 @@
 				323133282AC0DCDB0088639E /* AppFeature+State.swift in Sources */,
 				3231332B2AC0DCDB0088639E /* DataDIContainer.swift in Sources */,
 				323133292AC0DCDB0088639E /* TabBarView.swift in Sources */,
+				320E6B2D2ACF62DD009CD90A /* AppModel.swift in Sources */,
 				327771DF2ACA157D000E0403 /* MediaGenreItem.swift in Sources */,
 				329E59B72AC1033D00D0FBAF /* MediaListView.swift in Sources */,
 				3231332A2AC0DCDB0088639E /* TabBarFeature.swift in Sources */,

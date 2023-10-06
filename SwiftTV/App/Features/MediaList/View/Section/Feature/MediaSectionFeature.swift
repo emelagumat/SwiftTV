@@ -5,19 +5,40 @@ import Domain
 struct MediaSectionFeature: Reducer {
     @Dependency(\.listClient)
     var listClient
-
+    
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             case .onAppear:
                 if state.thumbnails.isEmpty {
-                    let category = state.collection.category
-                    return .run { send in
-                        _ = await listClient.getAllGenres()
-                        let results = try await listClient.getNextPage(category)
-                        if case let .success(success) = results {
-                            await send(.onLoadCollection(success))
+                    if state.filters.isEmpty {
+                        let category = state.collection.category
+                        let currentPage = state.currentPage
+                        state.currentPage += 1
+                        return .run { send in
+                            _ = await listClient.getAllGenres()
+                            let results = try await listClient.getNextPage(currentPage, category)
+                            if case let .success(success) = results {
+                                await send(.onLoadCollection(success))
+                            }
                         }
+                    } else {
+                        let genres = state.filters
+                        let currentPage = state.currentPage
+                        state.currentPage += 1
+                        
+                        return .merge(
+                            genres.map { genre in
+                                Effect.run { send in
+                                    let results = try await listClient.getNextDiscoveryPage(currentPage, DiscoveryRequest(category: .movie, genres: [genre]))
+                                    if case let .success(success) = results, let section = success.first {
+                                        
+                                        await send(.onLoadCollection(section))
+                                    }
+                                    
+                                }
+                            }
+                        )
                     }
                 } else {
                     return .none
@@ -31,20 +52,67 @@ struct MediaSectionFeature: Reducer {
             case .thumbnail:
                 return .none
             case .onReachListEnd:
-                let category = state.collection.category
-                return .run { send in
-                    let results = try await listClient.getNextPage(category)
-                    if case let .success(success) = results {
-                        await send(.onLoadCollection(success))
+                if state.filters.isEmpty {
+                    let category = state.collection.category
+                    let currentPage = state.currentPage
+                    state.currentPage += 1
+                    return .run { send in
+                        let results = try await listClient.getNextPage(currentPage, category)
+                        if case let .success(success) = results {
+                            await send(.onLoadCollection(success))
+                        }
+                    }
+                } else {
+                    let genres = state.filters
+                    if state.collection.hasMoreItems {
+                        let currentPage = state.currentPage
+                        state.currentPage += 1
+                        return .merge(
+                            genres.map { genre in
+                                Effect.run { send in
+                                    let results = try await listClient.getNextDiscoveryPage(currentPage, DiscoveryRequest(category: .movie, genres: [genre]))
+                                    if case let .success(success) = results, let section = success.first {
+                                        
+                                        await send(.onLoadCollection(section))
+                                    }
+                                    
+                                }
+                            }
+                        )
+                    } else {
+                        let mec = state.thumbnails.map {
+                            MediaSectionFeature.Action.thumbnail(
+                                id: $0.id,
+                                action: .image(.onLoaded(nil))
+                            )
+                        }
+                        return .merge(mec.map { .send($0) })
                     }
                 }
             case let .onSetFilters(genres):
-                state.filters = genres
-                if state.thumbnails.isEmpty {
-                    return .send(.onReachListEnd)
-                }
+//                state.filters = genres
+//                if !genres.isEmpty {
+//                    return .merge(
+//                        genres.map { genre in
+//                            Effect.run(operation: { send in
+//                                let results = try await listClient.getNextDiscoveryPage(DiscoveryRequest(category: .movie, genres: [genre]))
+//                                if case let .success(success) = results, let section = success.first {
+//                                    
+//                                    await send(.onLoadCollection(section))
+//                                }
+//                            }, catch: {
+//                                print($0)
+//                                print($1)
+//                            })
+//                        }
+//                    )
+//                }
+//                if state.thumbnails.isEmpty {
+//                    return .send(.onReachListEnd)
+//                }
                 return .none
             }
+            
         }
         .forEach(\.thumbnails, action: /Action.thumbnail(id:action:)) {
             MediaThumnailFeature()
@@ -54,7 +122,8 @@ struct MediaSectionFeature: Reducer {
 
 extension MediaSectionFeature {
     struct State: Equatable, Identifiable {
-        let id: UUID
+        let id: String
+        var currentPage = 1
         var collection: MediaItemCollection {
             didSet {
                 updateWithFilters()
@@ -65,31 +134,33 @@ extension MediaSectionFeature {
                 updateWithFilters()
             }
         }
-
+        
         private var _thumbnails: [MediaThumnailFeature.State] = []
         var thumbnails: IdentifiedArrayOf<MediaThumnailFeature.State> = []
-
+        
         init() {
             self.id = .init()
             self.collection = .init(
                 id: UUID().uuidString,
                 title: "",
                 category: .series(.popular),
-                items: []
+                items: [],
+                hasMoreItems: true
             )
         }
-
-        init(collection: MediaItemCollection) {
-            self.id = .init()
+        
+        init(collection: MediaItemCollection, filters: [MediaGenre]) {
+            self.id = collection.id
             self.collection = collection
+            self.filters = filters
             self.thumbnails = .init(uniqueElements: collection.items.map { MediaThumnailFeature.State(item: $0) })
         }
-
+        
         mutating func update(with collection: MediaCollection) {
             let newItems =  collection.items.map {
                 let tvMedia = $0 as? TVMediaItem
                 let movieMedia = $0 as? MovieMediaItem
-
+                
                 return MediaItemModel(
                     id: String($0.id),
                     name: tvMedia?.name ?? movieMedia?.title ?? "",
@@ -101,15 +172,16 @@ extension MediaSectionFeature {
                 )
             }
                 .filter { model in !self.collection.items.contains(where: { $0.id == model.id })}
-
+            
             self.collection = .init(
                 id: self.collection.id,
                 title: collection.category.displayName,
                 category: self.collection.category,
-                items: self.collection.items + newItems
+                items: self.collection.items + newItems,
+                hasMoreItems: collection.hasMoreItems
             )
         }
-
+        
         private mutating func updateWithFilters() {
             var thumbailsItems = collection.items
             if !filters.isEmpty {

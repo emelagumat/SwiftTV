@@ -6,6 +6,7 @@ struct MediaItemCollection: Identifiable, Equatable {
     let title: String
     let category: MediaCollection.Category
     let items: [MediaItemModel]
+    let hasMoreItems: Bool
 }
 
 extension MediaItemCollection {
@@ -20,7 +21,7 @@ extension MediaItemCollection {
             serieCategory = .series(.popular)
         }
         self.init(
-            id: UUID().uuidString,
+            id: mediaCollection.category.displayName,
             title: mediaCollection.category.displayName,
             category: serieCategory,
             items: mediaCollection.items.map {
@@ -34,7 +35,8 @@ extension MediaItemCollection {
                     genres: $0.genres.map { MediaGenreItem(id: $0.id, name: $0.name)},
                     rate: .init($0.rate)
                 )
-            }
+            },
+            hasMoreItems: mediaCollection.hasMoreItems
         )
     }
 }
@@ -61,6 +63,8 @@ private extension MediaCollection.Category.Serie {
             "Popular"
         case .topRated:
             "Top rated"
+        case let .custom(name):
+            name
         }
     }
 }
@@ -76,6 +80,8 @@ private extension MediaCollection.Category.Movie {
             "Popular"
         case .topRated:
             "Top rated"
+        case let .custom(name):
+            name
         }
     }
 }

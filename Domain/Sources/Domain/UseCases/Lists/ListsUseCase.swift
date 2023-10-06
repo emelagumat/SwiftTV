@@ -5,10 +5,22 @@ public final class ListsUseCase {
         self.listsRepository = listsRepository
     }
 
-    public func getNextPage(for category: MediaCollection.Category) async -> Result<MediaCollection, DomainError> {
-        await listsRepository.getNextPage(for: category)
+//    public func getNextPage(for category: MediaCollection.Category) async -> Result<MediaCollection, DomainError> {
+//        await listsRepository.getNextPage(for: category)
+//    }
+    public func getPage(
+        _ page: Int,
+        for category: MediaCollection.Category
+    ) async -> Result<MediaCollection, DomainError> {
+        await listsRepository.getPage(page, for: category)
     }
-
+    
+//    public func getNextDiscoveryPage(for request: DiscoveryRequest) async -> Result<[MediaCollection], DomainError> {
+//        await listsRepository.getNextDiscoveryPage(for: request)
+//    }
+    public func getDiscoveryPage(_ page: Int, for request: DiscoveryRequest) async -> Result<[MediaCollection], DomainError> {
+        await listsRepository.getDiscoveryPage(page, for: request)
+    }
     public func getAllGenres() async -> Result<[MediaGenre], DomainError> {
         await listsRepository.getAllGenres()
     }

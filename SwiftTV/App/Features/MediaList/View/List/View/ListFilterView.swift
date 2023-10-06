@@ -15,7 +15,7 @@ struct ListFilterView: View {
                             ForEach(viewStore.items) { item in
                                 GenreCapsule(text: item.genre.name)
                                     .foregroundStyle(item.isSelected ? .appAccent : .appDisabled)                                    .onTapGesture {
-                                        viewStore.send(.onSelect(item))
+                                        viewStore.send(.onSelect(item), animation: .bouncy)
                                     }
                             }
                         }

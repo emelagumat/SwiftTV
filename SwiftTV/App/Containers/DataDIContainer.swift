@@ -8,12 +8,14 @@ class DataDIContainer {
 
     lazy private(set) var listsRepository: ListsRepository = ListsRepositoryImpl(
         listApiService: SeriesListApiService(),
+        discoveryApiService: .init(),
         genresApiService: GenresAPIService(),
         provider: provider
     )
 
     lazy private(set) var movieListsRepository: ListsRepository = ListsRepositoryImpl(
         listApiService: MoviesListApiService(),
+        discoveryApiService: .init(),
         genresApiService: GenresAPIService(),
         provider: provider
     )

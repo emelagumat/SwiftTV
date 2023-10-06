@@ -27,6 +27,7 @@ struct MediaListView: View {
                                 ),
                                 content: { sectionStore in
                                     MediaSectionView(store: sectionStore)
+                                        .transition(.identity)
                                 }
                             )
                         }
