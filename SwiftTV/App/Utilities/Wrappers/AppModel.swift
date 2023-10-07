@@ -52,7 +52,7 @@ public extension Mapping {
     }
 }
 
-public extension Mapping where Z == Int {
+public extension Mapping where Z == Int, U == String {
     static var toString: Mapping<Int, String> {
         .init { String($0) }
     }

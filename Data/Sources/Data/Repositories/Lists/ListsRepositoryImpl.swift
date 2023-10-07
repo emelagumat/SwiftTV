@@ -46,7 +46,6 @@ public actor ListsRepositoryImpl: ListsRepository {
                 category: category,
                 hasMoreItems: hasMoreItems
             )
-            print("💛 has more items \(hasMoreItems)")
             return .success(collection)
         } catch {
             return .failure(.unknown)
@@ -73,7 +72,6 @@ public actor ListsRepositoryImpl: ListsRepository {
                 category: category,
                 hasMoreItems: hasMoreItems
             )
-            print("💛 has more items \(hasMoreItems)")
             return .success(collection)
         } catch {
             return .failure(.unknown)
@@ -97,7 +95,6 @@ public actor ListsRepositoryImpl: ListsRepository {
             let hasMoreItems = totalPages > nextPage
 
             let items = buildMediaItems(with: pageResults, category: request.category)
-            print("💛 has more items \(hasMoreItems)")
             
             let collections = request.genres.map {
                 let category: MediaCollection.Category
@@ -138,7 +135,6 @@ public actor ListsRepositoryImpl: ListsRepository {
             let hasMoreItems = totalPages > page
 
             let items = buildMediaItems(with: pageResults, category: request.category)
-            print("💛 has more items \(hasMoreItems)")
             
             let collections = request.genres.map {
                 let category: MediaCollection.Category

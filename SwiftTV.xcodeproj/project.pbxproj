@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		320E6B2D2ACF62DD009CD90A /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320E6B2C2ACF62DD009CD90A /* AppModel.swift */; };
+		320E6B302AD0AB64009CD90A /* MLDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 320E6B2F2AD0AB64009CD90A /* MLDCore */; };
 		323132D22AC0D53A0088639E /* SwiftTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132D12AC0D53A0088639E /* SwiftTVApp.swift */; };
 		323132D62AC0D53A0088639E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323132D52AC0D53A0088639E /* Item.swift */; };
 		323132D82AC0D53B0088639E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323132D72AC0D53B0088639E /* Assets.xcassets */; };
@@ -55,7 +56,6 @@
 		32AE3B6D2AC72FD200AABF11 /* ListClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3B6C2AC72FD200AABF11 /* ListClient.swift */; };
 		32AE3B862AC73D6E00AABF11 /* MediaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3B832AC73D6E00AABF11 /* MediaDetailView.swift */; };
 		32AE3B872AC73D6E00AABF11 /* MediaDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3B852AC73D6E00AABF11 /* MediaDetailFeature.swift */; };
-		32CC25BA2ACAC35200F49461 /* MLDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 32CC25B92ACAC35200F49461 /* MLDCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,7 +135,7 @@
 				323133032AC0DAAF0088639E /* SFSymbolEnum in Frameworks */,
 				323133002AC0DAA10088639E /* ComposableArchitecture in Frameworks */,
 				3231330B2AC0DB7E0088639E /* Domain in Frameworks */,
-				32CC25BA2ACAC35200F49461 /* MLDCore in Frameworks */,
+				320E6B302AD0AB64009CD90A /* MLDCore in Frameworks */,
 				323133092AC0DB7A0088639E /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,7 +538,7 @@
 				323133022AC0DAAF0088639E /* SFSymbolEnum */,
 				323133082AC0DB7A0088639E /* Data */,
 				3231330A2AC0DB7E0088639E /* Domain */,
-				32CC25B92ACAC35200F49461 /* MLDCore */,
+				320E6B2F2AD0AB64009CD90A /* MLDCore */,
 			);
 			productName = SwiftTV;
 			productReference = 323132CE2AC0D53A0088639E /* SwiftTV.app */;
@@ -619,7 +619,7 @@
 				323132FE2AC0DAA10088639E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				323133012AC0DAAF0088639E /* XCRemoteSwiftPackageReference "SFSymbolEnum" */,
 				329E59DF2AC2F40400D0FBAF /* XCRemoteSwiftPackageReference "swift-power-assert" */,
-				32CC25B82ACABEF600F49461 /* XCRemoteSwiftPackageReference "MLDCore" */,
+				320E6B2E2AD0AA9D009CD90A /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */,
 			);
 			productRefGroup = 323132CF2AC0D53A0088639E /* Products */;
 			projectDirPath = "";
@@ -1060,6 +1060,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		320E6B2E2AD0AA9D009CD90A /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../MLDCore/MLDCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		323132FE2AC0DAA10088639E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1085,17 +1092,14 @@
 				minimumVersion = 0.12.0;
 			};
 		};
-		32CC25B82ACABEF600F49461 /* XCRemoteSwiftPackageReference "MLDCore" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/emelagumat/MLDCore.git";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		320E6B2F2AD0AB64009CD90A /* MLDCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 320E6B2E2AD0AA9D009CD90A /* XCLocalSwiftPackageReference "../MLDCore/MLDCore" */;
+			productName = MLDCore;
+		};
 		323132FF2AC0DAA10088639E /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 323132FE2AC0DAA10088639E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
@@ -1118,11 +1122,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 329E59DF2AC2F40400D0FBAF /* XCRemoteSwiftPackageReference "swift-power-assert" */;
 			productName = PowerAssert;
-		};
-		32CC25B92ACAC35200F49461 /* MLDCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 32CC25B82ACABEF600F49461 /* XCRemoteSwiftPackageReference "MLDCore" */;
-			productName = MLDCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,6 +7,7 @@ struct MediaThumnailFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
+                
                     return .send(.image(.onGetStringURL(state.item.posterStringURL)))
             case .image:
                 return .none
@@ -23,7 +24,7 @@ struct MediaThumnailFeature: Reducer {
 
 extension MediaThumnailFeature {
     struct State: Equatable, Identifiable {
-        let id: UUID = .init()
+        var id: String { item.id }
         var item: MediaItemModel
         var image = RemoteImageFeature.State()
     }

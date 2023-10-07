@@ -27,7 +27,7 @@ struct MediaSectionView: View {
                         )
 
                         ProgressView()
-                            .onAppear { viewStore.send(.onReachListEnd) }
+                            .task { viewStore.send(.onReachListEnd) }
                     }
                     .padding(.leading)
                 }
