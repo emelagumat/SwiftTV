@@ -12,14 +12,14 @@ struct TabBarViewBuilder {
             NavigationStack {
                 WithViewStore(store, observe: \.tabs) { _ in
                     IfLetStore(store.scope(state: \.seriesList, action: TabBarFeature.Action.series)) { store in
-                        
+
                         MediaListView(store: store)
                             .navigationTitle("TV")
 #if canImport(iOS)
                             .navigationBarTitleDisplayMode(.inline)
 #endif
                     }
-                    
+
                 }
             }
         case "Movies":
@@ -34,6 +34,7 @@ struct TabBarViewBuilder {
                     }
                 }
             }
+
         case "App":
             ZStack(alignment: .center) {
                 VStack(spacing: 32) {

@@ -35,7 +35,7 @@ public extension MediaCollection.Category {
         case topRated
         case onTheAir
         case custom(String)
-        
+
         public static var allCases: [MediaCollection.Category.Serie] {
             [
                 .popular,
@@ -52,7 +52,7 @@ public extension MediaCollection.Category {
         case topRated
         case nowPlaying
         case custom(String)
-        
+
         public static var allCases: [MediaCollection.Category.Movie] {
             [
                 .popular,
