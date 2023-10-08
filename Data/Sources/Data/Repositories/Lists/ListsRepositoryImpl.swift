@@ -51,7 +51,7 @@ public actor ListsRepositoryImpl: ListsRepository {
             return .failure(.unknown)
         }
     }
-    
+
     public func getPage(_ page: Int, for category: MediaCollection.Category) async -> Result<MediaCollection, DomainError> {
         let endpoint = listApiService.buildEndpoint(
             with: .getPage(page: page, category: category)
@@ -77,7 +77,7 @@ public actor ListsRepositoryImpl: ListsRepository {
             return .failure(.unknown)
         }
     }
-    
+
     public func getNextDiscoveryPage(for request: DiscoveryRequest) async -> Result<[MediaCollection], DomainError> {
         let nextPage = getAndUpdateNextDiscoveryPageIndex(for: request)
         let endpoint = discoveryApiService.buildEndpoint(
@@ -95,17 +95,17 @@ public actor ListsRepositoryImpl: ListsRepository {
             let hasMoreItems = totalPages > nextPage
 
             let items = buildMediaItems(with: pageResults, category: request.category)
-            
+
             let collections = request.genres.map {
                 let category: MediaCollection.Category
-                
+
                     switch request.category {
                     case .movie:
                             category = .movies(.custom($0.name))
                     case .tv:
                             category = .series(.custom($0.name))
                     }
-                
+
                 return MediaCollection(
                     category: category,
                     items: items,
@@ -135,17 +135,17 @@ public actor ListsRepositoryImpl: ListsRepository {
             let hasMoreItems = totalPages > page
 
             let items = buildMediaItems(with: pageResults, category: request.category)
-            
+
             let collections = request.genres.map {
                 let category: MediaCollection.Category
-                
+
                     switch request.category {
                     case .movie:
                             category = .movies(.custom($0.name))
                     case .tv:
                             category = .series(.custom($0.name))
                     }
-                
+
                 return MediaCollection(
                     category: category,
                     items: items,
@@ -158,7 +158,7 @@ public actor ListsRepositoryImpl: ListsRepository {
             return .failure(.unknown)
         }
     }
-    
+
     public func getAllGenres() async -> Result<[MediaGenre], DomainError> {
         guard
             genres.isEmpty
@@ -182,7 +182,7 @@ public actor ListsRepositoryImpl: ListsRepository {
         pagesDict[category] = newPage
         return nextPage
     }
-    
+
     private func getAndUpdateNextDiscoveryPageIndex(for request: DiscoveryRequest) -> Int {
         let nextPage = discoveryPagesDict[request, default: 1]
         let newPage = nextPage + 1
@@ -223,7 +223,7 @@ public actor ListsRepositoryImpl: ListsRepository {
             hasMoreItems: hasMoreItems
         )
     }
-    
+
     private func buildMediaItems(with responses: [MediaResponse?], category: MediaItemCategory) -> [MediaItem] {
             let results: [MediaItem]
 
@@ -245,7 +245,7 @@ public actor ListsRepositoryImpl: ListsRepository {
                         )
                 }
             }
-        
+
         return results
     }
 }

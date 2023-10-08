@@ -2,14 +2,6 @@ import SwiftUI
 import Domain
 
 struct MediaItemCollection: Identifiable, Equatable {
-    internal init(id: String, title: String, category: MediaCollection.Category, items: [MediaItemModel], hasMoreItems: Bool) {
-        self.id = id
-        self.title = title
-        self.category = category
-        self.items = items
-        self.hasMoreItems = hasMoreItems
-    }
-    
     let id: String
     let title: String
     let category: MediaCollection.Category

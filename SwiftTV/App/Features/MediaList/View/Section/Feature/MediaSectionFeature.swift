@@ -5,7 +5,7 @@ import Domain
 struct MediaSectionFeature: Reducer {
     @Dependency(\.listClient)
     var listClient
-    
+
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
@@ -19,7 +19,7 @@ struct MediaSectionFeature: Reducer {
             case .onReachListEnd:
                 return .none
             }
-            
+
         }
         .forEach(\.thumbnails, action: /Action.thumbnail(id:action:)) {
             MediaThumnailFeature()
@@ -33,9 +33,9 @@ extension MediaSectionFeature {
         let id: String
         var currentPage = 1
         var collection: MediaItemCollection
-        
+
         var thumbnails: IdentifiedArrayOf<MediaThumnailFeature.State> = []
-        
+
         init() {
             self.sectionType = .tv
             self.id = .init()
@@ -47,19 +47,19 @@ extension MediaSectionFeature {
                 hasMoreItems: true
             )
         }
-        
+
         init(collection: MediaItemCollection, sectionType: SectionType) {
             self.sectionType = sectionType
             self.id = collection.id
             self.collection = collection
             updateThumnbails()
         }
-        
+
         mutating func update(with collection: MediaCollection) {
             let newItems =  collection.items.map {
                 let tvMedia = $0 as? TVMediaItem
                 let movieMedia = $0 as? MovieMediaItem
-                
+
                 return MediaItemModel(
                     id: String($0.id),
                     name: tvMedia?.name ?? movieMedia?.title ?? "",
@@ -71,7 +71,7 @@ extension MediaSectionFeature {
                 )
             }
                 .filter { model in !self.collection.items.contains(where: { $0.id == model.id })}
-            
+
             self.collection = .init(
                 id: self.collection.id,
                 title: collection.category.displayName,
@@ -79,14 +79,15 @@ extension MediaSectionFeature {
                 items: self.collection.items + newItems,
                 hasMoreItems: collection.hasMoreItems
             )
-            updateThumnbails()
+            let newThumbnails = newItems.map { MediaThumnailFeature.State(item: $0) }
+            self.thumbnails.append(contentsOf: newThumbnails)
         }
-        
+
         private mutating func updateThumnbails() {
             self.thumbnails = .init(uniqueElements: collection.items.map {
                 MediaThumnailFeature.State(item: $0) })
         }
-        
+
         enum SectionType: Equatable {
             case tv
             case movie

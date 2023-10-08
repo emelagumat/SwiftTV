@@ -25,9 +25,12 @@ struct MediaSectionView: View {
                                 MediaThumbnailView(store: store)
                             }
                         )
-
-                        ProgressView()
-                            .task { viewStore.send(.onReachListEnd) }
+                        if !viewStore.thumbnails.isEmpty {
+                            ProgressView()
+                                .onAppear {
+                                    viewStore.send(.onReachListEnd)
+                                }
+                        }
                     }
                     .padding(.leading)
                 }
