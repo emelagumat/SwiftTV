@@ -8,7 +8,7 @@ struct MediaListView: View {
     var body: some View {
         WithViewStore(
             store,
-            observe: MediaListView.State.init
+            observe: { $0 }
         ) { viewStore in
                 VStack {
                     ListFilterView(
@@ -27,6 +27,7 @@ struct MediaListView: View {
                                 ),
                                 content: { sectionStore in
                                     MediaSectionView(store: sectionStore)
+                                        .transition(.identity)
                                 }
                             )
                         }

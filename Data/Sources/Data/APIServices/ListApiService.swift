@@ -56,6 +56,8 @@ private extension MediaCollection.Category.Serie {
             "/popular"
         case .topRated:
             "/top_rated"
+        case .custom:
+            ""
         }
     }
 }
@@ -71,6 +73,8 @@ private extension MediaCollection.Category.Movie {
             "/top_rated"
         case .nowPlaying:
             "/now_playing"
+        case .custom:
+            ""
         }
     }
 }

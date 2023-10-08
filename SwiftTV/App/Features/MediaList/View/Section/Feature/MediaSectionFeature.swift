@@ -10,41 +10,16 @@ struct MediaSectionFeature: Reducer {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                if state.thumbnails.isEmpty {
-                    let category = state.collection.category
-                    return .run { send in
-                        _ = await listClient.getAllGenres()
-                        let results = try await listClient.getNextPage(category)
-                        if case let .success(success) = results {
-                            await send(.onLoadCollection(success))
-                        }
-                    }
-                } else {
                     return .none
-                }
             case let .onLoadCollection(collection):
                 state.update(with: collection)
-                if state.thumbnails.isEmpty {
-                    return .send(.onReachListEnd)
-                }
                 return .none
             case .thumbnail:
                 return .none
             case .onReachListEnd:
-                let category = state.collection.category
-                return .run { send in
-                    let results = try await listClient.getNextPage(category)
-                    if case let .success(success) = results {
-                        await send(.onLoadCollection(success))
-                    }
-                }
-            case let .onSetFilters(genres):
-                state.filters = genres
-                if state.thumbnails.isEmpty {
-                    return .send(.onReachListEnd)
-                }
                 return .none
             }
+
         }
         .forEach(\.thumbnails, action: /Action.thumbnail(id:action:)) {
             MediaThumnailFeature()
@@ -54,35 +29,30 @@ struct MediaSectionFeature: Reducer {
 
 extension MediaSectionFeature {
     struct State: Equatable, Identifiable {
-        let id: UUID
-        var collection: MediaItemCollection {
-            didSet {
-                updateWithFilters()
-            }
-        }
-        var filters: [MediaGenre] = [] {
-            didSet {
-                updateWithFilters()
-            }
-        }
+        let sectionType: SectionType
+        let id: String
+        var currentPage = 1
+        var collection: MediaItemCollection
 
-        private var _thumbnails: [MediaThumnailFeature.State] = []
         var thumbnails: IdentifiedArrayOf<MediaThumnailFeature.State> = []
 
         init() {
+            self.sectionType = .tv
             self.id = .init()
             self.collection = .init(
                 id: UUID().uuidString,
                 title: "",
                 category: .series(.popular),
-                items: []
+                items: [],
+                hasMoreItems: true
             )
         }
 
-        init(collection: MediaItemCollection) {
-            self.id = .init()
+        init(collection: MediaItemCollection, sectionType: SectionType) {
+            self.sectionType = sectionType
+            self.id = collection.id
             self.collection = collection
-            self.thumbnails = .init(uniqueElements: collection.items.map { MediaThumnailFeature.State(item: $0) })
+            updateThumnbails()
         }
 
         mutating func update(with collection: MediaCollection) {
@@ -106,22 +76,22 @@ extension MediaSectionFeature {
                 id: self.collection.id,
                 title: collection.category.displayName,
                 category: self.collection.category,
-                items: self.collection.items + newItems
+                items: self.collection.items + newItems,
+                hasMoreItems: collection.hasMoreItems
             )
+            let newThumbnails = newItems.map { MediaThumnailFeature.State(item: $0) }
+            self.thumbnails.append(contentsOf: newThumbnails)
         }
 
-        private mutating func updateWithFilters() {
-            var thumbailsItems = collection.items
-            if !filters.isEmpty {
-                thumbailsItems = thumbailsItems.filter {
-                    let thumbnailGenres = $0.genres.map { MediaGenre(id: $0.id, name: $0.name) }
-                    let containsAny = !thumbnailGenres.filter { filters.contains($0) }.isEmpty
-                    return containsAny
-                }
-            }
-            self.thumbnails = .init(uniqueElements: thumbailsItems.map {
-                MediaThumnailFeature.State(item: $0)
-            })
+        private mutating func updateThumnbails() {
+            self.thumbnails = .init(uniqueElements: collection.items.map {
+                MediaThumnailFeature.State(item: $0) })
+        }
+
+        enum SectionType: Equatable {
+            case tv
+            case movie
+            case discovery
         }
     }
 }
@@ -132,6 +102,5 @@ extension MediaSectionFeature {
         case onLoadCollection(MediaCollection)
         case thumbnail(id: MediaThumnailFeature.State.ID, action: MediaThumnailFeature.Action)
         case onReachListEnd
-        case onSetFilters([MediaGenre])
     }
 }

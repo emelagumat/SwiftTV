@@ -33,32 +33,33 @@ struct MediaDetailView: View {
     }
 
     private func makeHeader(with viewStore: ViewStoreOf<MediaDetailFeature>) -> some View {
-        VStack {
-            RemoteImage(
-                store: .init(
-                    initialState: RemoteImageFeature.State(imageStringURL: viewStore.model.backdropStringURL),
-                    reducer: {
-                        RemoteImageFeature()
-                    }
-                )
-            )
-            .resizable()
-            HStack {
-                Text(viewStore.model.name)
-                    .font(.large)
-                Spacer()
-                makeRating(with: viewStore.model.rate)
-            }
-            .padding(.horizontal)
-            if !viewStore.model.genres.isEmpty {
+            VStack {
+                    RemoteImage(
+                        store: .init(
+                            initialState: RemoteImageFeature.State(imageStringURL: viewStore.model.backdropStringURL),
+                            reducer: {
+                                RemoteImageFeature()
+                            }
+                        )
+                    )
+                    .resizable()
                 HStack {
+                    Text(viewStore.model.name)
+                        .font(.large)
                     Spacer()
-                    ForEach(viewStore.model.genres) { genre in
-                        GenreCapsule(text: genre.name)
-                    }
+                    makeRating(with: viewStore.model.rate)
                 }
-                .padding([.horizontal])
-            }
+                .padding(.horizontal)
+                if !viewStore.model.genres.isEmpty {
+                    HStack {
+                        Spacer()
+                        ForEach(viewStore.model.genres) { genre in
+                            GenreCapsule(text: genre.name)
+                        }
+                    }
+                    .padding([.horizontal])
+                }
+
         }
     }
 

@@ -34,6 +34,16 @@ public extension MediaCollection.Category {
         case airingToday
         case topRated
         case onTheAir
+        case custom(String)
+
+        public static var allCases: [MediaCollection.Category.Serie] {
+            [
+                .popular,
+                .airingToday,
+                .topRated,
+                .onTheAir
+            ]
+        }
     }
 
     enum Movie: Equatable, Hashable, CaseIterable {
@@ -41,5 +51,15 @@ public extension MediaCollection.Category {
         case upcoming
         case topRated
         case nowPlaying
+        case custom(String)
+
+        public static var allCases: [MediaCollection.Category.Movie] {
+            [
+                .popular,
+                .upcoming,
+                .topRated,
+                .nowPlaying
+            ]
+        }
     }
 }
