@@ -2,7 +2,7 @@
 
 ## Introduction 🌟
 
-Welcome to SwiftTV, a multi-platform app for browsing movies and TV shows. Designed for both iOS and macOS, this side project showcases the power of The Composable Architecture (TCA), SwiftUI, and Concurrency. This is an ideal project to check out if you're interested in modern iOS development techniques, reusable components, and SOLID principles.
+Welcome to SwiftTV, a multi-platform app for browsing movies and TV shows. Designed for both iOS and macOS, this demo project showcases the power of The Composable Architecture (TCA), SwiftUI, and Concurrency. This is a project a built to practice my TCA knowledges.
 
 ![SwiftTV Logo](assets/swifttv.png)
 
